@@ -1,9 +1,0 @@
-C:\Projects_CSharp\MQT\nfx\Output\Debug\LICENSE.txt
-C:\Projects_CSharp\MQT\nfx\Output\Debug\MySQLDriver\MySql.Data.dll
-C:\Projects_CSharp\MQT\nfx\Output\Debug\MySQLDriver\MySQLFOSS-License-Exception.pdf
-C:\Projects_CSharp\MQT\nfx\Output\Debug\WaveTestSite.laconf
-C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.NUnit.Integration.dll
-C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.NUnit.Integration.pdb
-C:\Projects_CSharp\MQT\nfx\Source\Testing\NUnit\NFX.NUnit.Integration\obj\Debug\NFX.NUnit.Integration.csprojResolveAssemblyReference.cache
-C:\Projects_CSharp\MQT\nfx\Source\Testing\NUnit\NFX.NUnit.Integration\obj\Debug\NFX.NUnit.Integration.dll
-C:\Projects_CSharp\MQT\nfx\Source\Testing\NUnit\NFX.NUnit.Integration\obj\Debug\NFX.NUnit.Integration.pdb

@@ -1,6 +1,0 @@
-C:\Projects_CSharp\MQT\nfx\Output\Debug\LICENSE.txt
-C:\Projects_CSharp\MQT\nfx\Output\Debug\BusinessLogic.dll
-C:\Projects_CSharp\MQT\nfx\Output\Debug\BusinessLogic.pdb
-C:\Projects_CSharp\MQT\nfx\Source\Testing\BusinessLogic\obj\Debug\BusinessLogic.csprojResolveAssemblyReference.cache
-C:\Projects_CSharp\MQT\nfx\Source\Testing\BusinessLogic\obj\Debug\BusinessLogic.dll
-C:\Projects_CSharp\MQT\nfx\Source\Testing\BusinessLogic\obj\Debug\BusinessLogic.pdb

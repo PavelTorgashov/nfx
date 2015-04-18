@@ -1,7 +1,0 @@
-C:\Projects_CSharp\MQT\nfx\Output\Debug\LICENSE.txt
-C:\Projects_CSharp\MQT\nfx\Output\Debug\gluec.exe.config
-C:\Projects_CSharp\MQT\nfx\Output\Debug\gluec.exe
-C:\Projects_CSharp\MQT\nfx\Output\Debug\gluec.pdb
-C:\Projects_CSharp\MQT\nfx\Source\Tools\gluec\obj\Debug\gluec.exe
-C:\Projects_CSharp\MQT\nfx\Source\Tools\gluec\obj\Debug\gluec.pdb
-C:\Projects_CSharp\MQT\nfx\Source\Tools\gluec\obj\Debug\gluec.csprojResolveAssemblyReference.cache

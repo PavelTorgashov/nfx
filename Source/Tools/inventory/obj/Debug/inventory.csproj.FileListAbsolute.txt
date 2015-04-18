@@ -1,7 +1,0 @@
-C:\Projects_CSharp\MQT\nfx\Output\Debug\LICENSE.txt
-C:\Projects_CSharp\MQT\nfx\Output\Debug\inventory.exe.config
-C:\Projects_CSharp\MQT\nfx\Output\Debug\inventory.exe
-C:\Projects_CSharp\MQT\nfx\Output\Debug\inventory.pdb
-C:\Projects_CSharp\MQT\nfx\Source\Tools\inventory\obj\Debug\inventory.exe
-C:\Projects_CSharp\MQT\nfx\Source\Tools\inventory\obj\Debug\inventory.pdb
-C:\Projects_CSharp\MQT\nfx\Source\Tools\inventory\obj\Debug\inventory.csprojResolveAssemblyReference.cache

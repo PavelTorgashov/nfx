@@ -1,4 +1,0 @@
-C:\Projects_CSharp\MQT\nfx\Output\Debug\buildinfo.exe
-C:\Projects_CSharp\MQT\nfx\Output\Debug\buildinfo.pdb
-C:\Projects_CSharp\MQT\nfx\Source\Tools\buildinfo\obj\Debug\buildinfo.exe
-C:\Projects_CSharp\MQT\nfx\Source\Tools\buildinfo\obj\Debug\buildinfo.pdb

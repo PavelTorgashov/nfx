@@ -1,7 +1,0 @@
-C:\Projects_CSharp\MQT\nfx\Output\Debug\LICENSE.txt
-C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.MongoDB.XML
-C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.MongoDB.dll
-C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.MongoDB.pdb
-C:\Projects_CSharp\MQT\nfx\Source\Providers\NFX.MongoDB\obj\Debug\NFX.MongoDB.dll
-C:\Projects_CSharp\MQT\nfx\Source\Providers\NFX.MongoDB\obj\Debug\NFX.MongoDB.pdb
-C:\Projects_CSharp\MQT\nfx\Source\Providers\NFX.MongoDB\obj\Debug\NFX.MongoDB.csprojResolveAssemblyReference.cache

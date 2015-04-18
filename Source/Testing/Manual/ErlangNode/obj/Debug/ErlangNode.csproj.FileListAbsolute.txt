@@ -1,8 +1,0 @@
-C:\Projects_CSharp\MQT\nfx\Output\Debug\LICENSE.txt
-C:\Projects_CSharp\MQT\nfx\Output\Debug\ErlangNode.laconf
-C:\Projects_CSharp\MQT\nfx\Output\Debug\ErlangNode.exe.config
-C:\Projects_CSharp\MQT\nfx\Output\Debug\ErlangNode.exe
-C:\Projects_CSharp\MQT\nfx\Output\Debug\ErlangNode.pdb
-C:\Projects_CSharp\MQT\nfx\Source\Testing\Manual\ErlangNode\obj\Debug\ErlangNode.exe
-C:\Projects_CSharp\MQT\nfx\Source\Testing\Manual\ErlangNode\obj\Debug\ErlangNode.pdb
-C:\Projects_CSharp\MQT\nfx\Source\Testing\Manual\ErlangNode\obj\Debug\ErlangNode.csprojResolveAssemblyReference.cache

@@ -1,6 +1,0 @@
-C:\Projects_CSharp\MQT\nfx\Output\Debug\delbydate.exe.config
-C:\Projects_CSharp\MQT\nfx\Output\Debug\delbydate.exe
-C:\Projects_CSharp\MQT\nfx\Output\Debug\delbydate.pdb
-C:\Projects_CSharp\MQT\nfx\Source\Tools\delbydate\obj\Debug\delbydate.csprojResolveAssemblyReference.cache
-C:\Projects_CSharp\MQT\nfx\Source\Tools\delbydate\obj\Debug\delbydate.exe
-C:\Projects_CSharp\MQT\nfx\Source\Tools\delbydate\obj\Debug\delbydate.pdb

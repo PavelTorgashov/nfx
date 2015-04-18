@@ -112,15 +112,13 @@ namespace NFX.SSH.SSH2 {
         {
             StreamReader r = new StreamReader(strm, Encoding.ASCII);
             string l = r.ReadLine();
-            if (l == null || (l != "---- BEGIN SSH2 ENCRYPTED PRIVATE KEY ----" &&
-                              l != "-----BEGIN RSA PRIVATE KEY-----"))
+            if (l == null || l != "---- BEGIN SSH2 ENCRYPTED PRIVATE KEY ----")
                 throw new SSHException("Wrong key format (expected SSH2 ENCRYPTED PRIVATE KEY)");
 
             string comment = "";
             l = r.ReadLine();
             StringBuilder buf = new StringBuilder();
-            while (l != "---- END SSH2 ENCRYPTED PRIVATE KEY ----" && 
-                   l != "-----END RSA PRIVATE KEY-----")
+            while (l != "---- END SSH2 ENCRYPTED PRIVATE KEY ----")
             {
                 if (l.IndexOf(':') == -1)
                     buf.Append(l);

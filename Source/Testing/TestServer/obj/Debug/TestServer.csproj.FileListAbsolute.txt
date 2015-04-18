@@ -1,8 +1,0 @@
-C:\Projects_CSharp\MQT\nfx\Output\Debug\LICENSE.txt
-C:\Projects_CSharp\MQT\nfx\Output\Debug\TestServer.laconf
-C:\Projects_CSharp\MQT\nfx\Output\Debug\TestServer.exe.config
-C:\Projects_CSharp\MQT\nfx\Output\Debug\TestServer.exe
-C:\Projects_CSharp\MQT\nfx\Output\Debug\TestServer.pdb
-C:\Projects_CSharp\MQT\nfx\Source\Testing\TestServer\obj\Debug\TestServer.csprojResolveAssemblyReference.cache
-C:\Projects_CSharp\MQT\nfx\Source\Testing\TestServer\obj\Debug\TestServer.exe
-C:\Projects_CSharp\MQT\nfx\Source\Testing\TestServer\obj\Debug\TestServer.pdb
