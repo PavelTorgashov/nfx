@@ -98,7 +98,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "closure-compiler", "closure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "buildinfo", "Tools\buildinfo\buildinfo.csproj", "{BE7C8F73-99EF-4294-82BF-234409CB093F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErlangSshTransport", "ErlangSshTransport\ErlangSshTransport.csproj", "{A6A0715F-35AE-45F9-BCE1-5E1C1AF2AF1C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErlangSshTransport", "Testing\ErlangSshTransport\ErlangSshTransport.csproj", "{A6A0715F-35AE-45F9-BCE1-5E1C1AF2AF1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
