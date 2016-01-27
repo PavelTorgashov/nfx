@@ -1,0 +1,9 @@
+C:\Projects_CSharp\MQT\nfx\Output\Debug\LICENSE.txt
+C:\Projects_CSharp\MQT\nfx\Output\Debug\MySQLDriver\MySql.Data.dll
+C:\Projects_CSharp\MQT\nfx\Output\Debug\MySQLDriver\MySQLFOSS-License-Exception.pdf
+C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.MySQL.XML
+C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.MySQL.dll
+C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.MySQL.pdb
+C:\Projects_CSharp\MQT\nfx\Source\Providers\NFX.MySQL\obj\Debug\NFX.MySQL.csprojResolveAssemblyReference.cache
+C:\Projects_CSharp\MQT\nfx\Source\Providers\NFX.MySQL\obj\Debug\NFX.MySQL.dll
+C:\Projects_CSharp\MQT\nfx\Source\Providers\NFX.MySQL\obj\Debug\NFX.MySQL.pdb

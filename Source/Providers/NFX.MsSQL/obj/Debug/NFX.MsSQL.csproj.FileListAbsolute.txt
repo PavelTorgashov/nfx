@@ -1,0 +1,7 @@
+C:\Projects_CSharp\MQT\nfx\Output\Debug\LICENSE.txt
+C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.MsSQL.XML
+C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.MsSQL.dll
+C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.MsSQL.pdb
+C:\Projects_CSharp\MQT\nfx\Source\Providers\NFX.MsSQL\obj\Debug\NFX.MsSQL.csprojResolveAssemblyReference.cache
+C:\Projects_CSharp\MQT\nfx\Source\Providers\NFX.MsSQL\obj\Debug\NFX.MsSQL.dll
+C:\Projects_CSharp\MQT\nfx\Source\Providers\NFX.MsSQL\obj\Debug\NFX.MsSQL.pdb

@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NFX.MySQL</name>
+    </assembly>
+    <members>
+        <member name="T:NFX.DataAccess.MySQL.MySQLCRUDQueryExecutionContext">
+            <summary>
+            Provides query execution environment in MySql context 
+            </summary>
+        </member>
+        <member name="T:NFX.DataAccess.MySQL.MySQLCRUDScriptQueryHandler">
+            <summary>
+            Executes MySql CRUD script-based queries
+            </summary>
+        </member>
+        <member name="M:NFX.DataAccess.MySQL.MySQLCRUDScriptQueryHandler.PopulateParameters(MySql.Data.MySqlClient.MySqlCommand,NFX.DataAccess.CRUD.Query)">
+            <summary>
+            Populates MySqlCommand with parameters from CRUD Query object
+            Note: this code was purposely made provider specific because other providers may treat some nuances differently
+            </summary>
+        </member>
+        <member name="M:NFX.DataAccess.MySQL.MySQLCRUDScriptQueryHandler.GetSchemaFromReader(System.String,NFX.DataAccess.CRUD.QuerySource,MySql.Data.MySqlClient.MySqlDataReader)">
+            <summary>
+            Gets CRUD schema from MySqlReader per particular QuerySource.
+            If source is null then all columns from reader are copied.
+            Note: this code was purposely made provider specific because other providers may treat some nuances differently
+            </summary>
+        </member>
+        <member name="T:NFX.DataAccess.MySQL.MySQLDataStore">
+            <summary>
+            Implements MySQL general data store that auto-generates SQLs for record models and supports CRUD operations.
+            This class IS thread-safe load/save/delete operations
+            </summary>
+        </member>
+        <member name="T:NFX.DataAccess.MySQL.MySQLDataStoreBase">
+            <summary>
+            Implements MySQL store base functionality
+            </summary>
+        </member>
+        <member name="M:NFX.DataAccess.MySQL.MySQLDataStoreBase.ExternalParametersForGroups(System.String[])">
+            <summary>
+            Returns named parameters that can be used to control this component
+            </summary>
+        </member>
+        <member name="M:NFX.DataAccess.MySQL.MySQLDataStoreBase.ExternalGetParameter(System.String,System.Object@,System.String[])">
+            <summary>
+            Gets external parameter value returning true if parameter was found
+            </summary>
+        </member>
+        <member name="M:NFX.DataAccess.MySQL.MySQLDataStoreBase.ExternalSetParameter(System.String,System.Object,System.String[])">
+            <summary>
+            Sets external parameter value returning true if parameter was found and set
+            </summary>
+        </member>
+        <member name="M:NFX.DataAccess.MySQL.MySQLDataStoreBase.GetConnection">
+            <summary>
+            Allocates MySQL connection
+            </summary>
+        </member>
+        <member name="P:NFX.DataAccess.MySQL.MySQLDataStoreBase.ExternalParameters">
+            <summary>
+            Returns named parameters that can be used to control this component
+            </summary>
+        </member>
+        <member name="P:NFX.DataAccess.MySQL.MySQLDataStoreBase.ConnectString">
+            <summary>
+            Get/Sets MySql database connection string
+            </summary>
+        </member>
+        <member name="P:NFX.DataAccess.MySQL.MySQLDataStoreBase.StringBool">
+            <summary>
+            When true commits boolean values as StringForTrue/StringForFalse instead of bool values. True by default
+            </summary>
+        </member>
+        <member name="P:NFX.DataAccess.MySQL.MySQLDataStoreBase.FullGDIDS">
+            <summary>
+            When true (default) writes gdid as byte[](era+id), false - uses ulong ID only
+            </summary>
+        </member>
+        <member name="M:NFX.DataAccess.MySQL.MySQLDataStore.DoLoad(MySql.Data.MySqlClient.MySqlConnection,NFX.RecordModel.ModelBase,NFX.DataAccess.IDataStoreKey,System.Object[])">
+            <summary>
+            Performs model load from MySQL server by generating appropriate SQL statement automatically.
+            Override to do custom loading for particular model instance
+            </summary>
+        </member>
+        <member name="M:NFX.DataAccess.MySQL.MySQLDataStore.DoSave(MySql.Data.MySqlClient.MySqlConnection,NFX.RecordModel.ModelBase,NFX.DataAccess.IDataStoreKey,System.Object[])">
+            <summary>
+            Performs model save into MySQL server by generating appropriate SQL statement automatically
+            Override to do custom saving for particular model instance
+            </summary>
+        </member>
+        <member name="M:NFX.DataAccess.MySQL.MySQLDataStore.DoDelete(MySql.Data.MySqlClient.MySqlConnection,NFX.RecordModel.ModelBase,NFX.DataAccess.IDataStoreKey,System.Object[])">
+            <summary>
+            Performs delete per model instance  from MySQL server by generating appropriate SQL statement automatically
+            Override to do custom deletion for particular model instance
+            </summary>
+        </member>
+        <member name="M:NFX.DataAccess.MySQL.MySQLDataStore.DoGetSchema(MySql.Data.MySqlClient.MySqlConnection,MySql.Data.MySqlClient.MySqlTransaction,NFX.DataAccess.CRUD.Query)">
+            <summary>
+             Performs CRUD load without fetching data only returning schema. Override to do custom Query interpretation
+            </summary>
+        </member>
+        <member name="M:NFX.DataAccess.MySQL.MySQLDataStore.DoLoad(MySql.Data.MySqlClient.MySqlConnection,MySql.Data.MySqlClient.MySqlTransaction,NFX.DataAccess.CRUD.Query[],System.Boolean)">
+            <summary>
+             Performs CRUD load. Override to do custom Query interpretation
+            </summary>
+        </member>
+        <member name="M:NFX.DataAccess.MySQL.MySQLDataStore.DoExecuteWithoutFetch(MySql.Data.MySqlClient.MySqlConnection,MySql.Data.MySqlClient.MySqlTransaction,NFX.DataAccess.CRUD.Query[])">
+            <summary>
+             Performs CRUD execution of queries that do not return result set. Override to do custom Query interpretation
+            </summary>
+        </member>
+        <member name="M:NFX.DataAccess.MySQL.MySQLDataStore.DoSave(MySql.Data.MySqlClient.MySqlConnection,MySql.Data.MySqlClient.MySqlTransaction,NFX.DataAccess.CRUD.RowsetBase[])">
+            <summary>
+            Performs CRUD batch save. Override to do custom batch saving
+            </summary>
+        </member>
+        <member name="M:NFX.DataAccess.MySQL.MySQLDataStore.DoInsert(MySql.Data.MySqlClient.MySqlConnection,MySql.Data.MySqlClient.MySqlTransaction,NFX.DataAccess.CRUD.Row)">
+            <summary>
+            Performs CRUD row insert. Override to do custom insertion
+            </summary>
+        </member>
+        <member name="M:NFX.DataAccess.MySQL.MySQLDataStore.DoUpsert(MySql.Data.MySqlClient.MySqlConnection,MySql.Data.MySqlClient.MySqlTransaction,NFX.DataAccess.CRUD.Row)">
+            <summary>
+            Performs CRUD row upsert. Override to do custom upsertion
+            </summary>
+        </member>
+        <member name="M:NFX.DataAccess.MySQL.MySQLDataStore.DoUpdate(MySql.Data.MySqlClient.MySqlConnection,MySql.Data.MySqlClient.MySqlTransaction,NFX.DataAccess.CRUD.Row,NFX.DataAccess.IDataStoreKey)">
+            <summary>
+            Performs CRUD row update. Override to do custom update
+            </summary>
+        </member>
+        <member name="M:NFX.DataAccess.MySQL.MySQLDataStore.DoDelete(MySql.Data.MySqlClient.MySqlConnection,MySql.Data.MySqlClient.MySqlTransaction,NFX.DataAccess.CRUD.Row,NFX.DataAccess.IDataStoreKey)">
+            <summary>
+            Performs CRUD row deletion. Override to do custom deletion
+            </summary>
+        </member>
+        <member name="T:NFX.DataAccess.MySQL.MySQLDataAccessException">
+            <summary>
+            Thrown by MySQL data access classes
+            </summary>
+        </member>
+        <member name="M:NFX.DataAccess.MySQL.RecordModelGenerator.Load(NFX.DataAccess.MySQL.MySQLDataStoreBase,MySql.Data.MySqlClient.MySqlConnection,System.String,NFX.RecordModel.ModelBase,NFX.DataAccess.IDataStoreKey,System.Object[])">
+            <summary>
+            Auto generates select sql and params. If sqlStatement!=null then params are added to that statement
+            </summary>
+        </member>
+        <member name="T:NFX.DataAccess.MySQL.MySQLCRUDTransaction">
+            <summary>
+            Represents MySQL CRUD transaction
+            </summary>
+        </member>
+        <member name="P:NFX.DataAccess.MySQL.MySQLCRUDTransaction.Connection">
+            <summary>
+            Returns the underlying MySQL connection that this transaction works through
+            </summary>
+        </member>
+        <member name="P:NFX.DataAccess.MySQL.MySQLCRUDTransaction.Transaction">
+            <summary>
+            Returns the underlying MySQL transaction that this instance represents. Do not call Commit/Rollback method on this property directly
+            </summary>
+        </member>
+    </members>
+</doc>

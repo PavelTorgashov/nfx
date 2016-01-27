@@ -1,0 +1,7 @@
+C:\Projects_CSharp\MQT\nfx\Output\Debug\LICENSE.txt
+C:\Projects_CSharp\MQT\nfx\Output\Debug\licupd.exe.config
+C:\Projects_CSharp\MQT\nfx\Output\Debug\licupd.exe
+C:\Projects_CSharp\MQT\nfx\Output\Debug\licupd.pdb
+C:\Projects_CSharp\MQT\nfx\Source\Tools\licupd\obj\Debug\licupd.exe
+C:\Projects_CSharp\MQT\nfx\Source\Tools\licupd\obj\Debug\licupd.pdb
+C:\Projects_CSharp\MQT\nfx\Source\Tools\licupd\obj\Debug\licupd.csprojResolveAssemblyReference.cache

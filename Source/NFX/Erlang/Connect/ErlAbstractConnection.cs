@@ -14,6 +14,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 </FILE_LICENSE>*/
+
 using System;
 using System.Linq;
 using System.Text;
@@ -67,11 +68,11 @@ namespace NFX.Erlang
 
   #region .ctor
 
-    private ErlAbstractConnection(ErlLocalNode home, ErlRemoteNode peer, TcpClient s, ErlAtom? cookie = null)
+    private ErlAbstractConnection(ErlLocalNode home, ErlRemoteNode peer, IErlTransport s, ErlAtom? cookie = null)
     {
       m_Peer = peer;
       m_Home = home;
-      m_TcpClient = s;
+      m_Transport = s;
       m_Cookie = !cookie.HasValue || cookie.Value == ErlAtom.Null
           ? (peer.Cookie == ErlAtom.Null ? home.Cookie : peer.Cookie) : cookie.Value;
       m_SentBytes = 0;
@@ -85,7 +86,7 @@ namespace NFX.Erlang
     /// based on data received when handshaking with the peer node, when
     /// the remote node is the connection intitiator.
     /// </summary>
-    protected ErlAbstractConnection(ErlLocalNode home, TcpClient s)
+    protected ErlAbstractConnection(ErlLocalNode home, IErlTransport s)
         : this(home, new ErlRemoteNode(home), s, home.Cookie)
     {
       setSockOpts();
@@ -93,8 +94,8 @@ namespace NFX.Erlang
 
       home.OnTrace(ErlTraceLevel.Handshake, Direction.Inbound, () =>
               StringConsts.ERL_CONN_ACCEPT_FROM.Args(
-                  IPAddress.Parse(s.Client.RemoteEndPoint.ToString()).ToString(),
-                  (s.Client.RemoteEndPoint as IPEndPoint).Port.ToString()));
+                  IPAddress.Parse(s.RemoteEndPoint.ToString()).ToString(),
+                  (s.RemoteEndPoint as IPEndPoint).Port.ToString()));
 
       // get his info
       recvName(m_Peer);
@@ -142,7 +143,7 @@ namespace NFX.Erlang
   #region Fields
 
     protected bool          m_Connected = false;  // connection status
-    protected TcpClient     m_TcpClient;          // communication channel
+    protected IErlTransport m_Transport;          // communication channel
     protected ErlRemoteNode m_Peer;               // who are we connected to
     protected ErlLocalNode  m_Home;               // the local node this connection is attached to
     protected ErlAtom       m_Cookie;
@@ -243,15 +244,15 @@ namespace NFX.Erlang
     protected virtual void Close()
     {
       m_Connected = false;
-      if (m_TcpClient != null)
-        lock (m_TcpClient)
+      if (m_Transport != null)
+        lock (m_Transport)
         {
-          if (m_TcpClient != null)
+          if (m_Transport != null)
           {
             m_Home.OnTrace(ErlTraceLevel.Ctrl, Direction.Inbound, "CLOSE");
-            try { m_TcpClient.Close(); }
+            try { m_Transport.Close(); }
             catch { }
-            finally { m_TcpClient = null; }
+            finally { m_Transport = null; }
           }
         }
     }
@@ -343,15 +344,15 @@ namespace NFX.Erlang
 
       var written = (int)header.Length;
 
-      lock (m_TcpClient)
+      lock (m_Transport)
       {
         try
         {
-          header.WriteTo(m_TcpClient.GetStream());
+          header.WriteTo(m_Transport.GetStream());
           if (payload != null)
           {
             written += (int)payload.Length;
-            payload.WriteTo(m_TcpClient.GetStream());
+            payload.WriteTo(m_Transport.GetStream());
           }
 
           m_SentBytes += written;
@@ -389,8 +390,8 @@ namespace NFX.Erlang
       int i;
       Stream sock = null;
 
-      lock (m_TcpClient)
-          sock = m_TcpClient.GetStream();
+      lock (m_Transport)
+          sock = m_Transport.GetStream();
 
       while (got < len && sock.CanRead)
       {
@@ -419,16 +420,16 @@ namespace NFX.Erlang
 
     private void setSockOpts()
     {
-      m_TcpClient.NoDelay = RemoteNode.TcpNoDelay;
-      if (RemoteNode.TcpRcvBufSize > 0) m_TcpClient.ReceiveBufferSize = RemoteNode.TcpRcvBufSize;
-      if (RemoteNode.TcpSndBufSize > 0) m_TcpClient.SendBufferSize = RemoteNode.TcpSndBufSize;
+      m_Transport.NoDelay = RemoteNode.TcpNoDelay;
+      if (RemoteNode.TcpRcvBufSize > 0) m_Transport.ReceiveBufferSize = RemoteNode.TcpRcvBufSize;
+      if (RemoteNode.TcpSndBufSize > 0) m_Transport.SendBufferSize = RemoteNode.TcpSndBufSize;
 
       // Use keepalive timer
-      m_TcpClient.Client.SetSocketOption(
+      m_Transport.SetSocketOption(
           System.Net.Sockets.SocketOptionLevel.Socket,
           System.Net.Sockets.SocketOptionName.KeepAlive, RemoteNode.TcpKeepAlive);
       // Close socket without waiting for it to deliver all data
-      m_TcpClient.Client.SetSocketOption(
+      m_Transport.SetSocketOption(
           System.Net.Sockets.SocketOptionLevel.Socket,
           System.Net.Sockets.SocketOptionName.DontLinger, !RemoteNode.TcpLinger);
     }
@@ -500,7 +501,7 @@ namespace NFX.Erlang
     {
       try
       {
-        m_TcpClient = new TcpClient();
+        m_Transport = new ErlTransportFactory().Create();
         setSockOpts();
         //m_TcpClient.ReceiveTimeout = 5000;
         var connected = false;
@@ -509,7 +510,7 @@ namespace NFX.Erlang
             {
               try
               {
-                m_TcpClient.Connect(m_Peer.Host, port);
+                m_Transport.Connect(m_Peer.Host, port);
                 connected = true;
               }
               catch (Exception) { }
@@ -597,7 +598,7 @@ namespace NFX.Erlang
       obuf.Write4BE((int)flags);
       obuf.Write(Encoding.ASCII.GetBytes(str));
 
-      obuf.WriteTo(m_TcpClient.GetStream());
+      obuf.WriteTo(m_Transport.GetStream());
 
       m_Home.OnTrace(ErlTraceLevel.Handshake, Direction.Outbound, () =>
           "sendName(flags({0:X2})={1}, dist={2}, local={3}".Args(
@@ -615,7 +616,7 @@ namespace NFX.Erlang
       obuf.Write4BE(challenge);
       obuf.Write(Encoding.ASCII.GetBytes(str.Value));
 
-      obuf.WriteTo(m_TcpClient.GetStream());
+      obuf.WriteTo(m_Transport.GetStream());
 
       m_Home.OnTrace(ErlTraceLevel.Handshake, Direction.Outbound, () =>
           "sendChallenge(flags({0:X2})={1}, dist={2}, challenge={3}, local={4}".Args(
@@ -708,7 +709,7 @@ namespace NFX.Erlang
       obuf.Write1(CHALLENGE_REPLY);
       obuf.Write4BE(challenge);
       obuf.Write(digest);
-      obuf.WriteTo(m_TcpClient.GetStream());
+      obuf.WriteTo(m_Transport.GetStream());
 
       m_Home.OnTrace(ErlTraceLevel.Handshake, Direction.Outbound, () =>
               "sendChallengeReply(challenge={0}, digest={1}, local={2}".Args(
@@ -756,7 +757,7 @@ namespace NFX.Erlang
       obuf.Write1(CHALLENGE_ACK);
       obuf.Write(digest);
 
-      obuf.WriteTo(m_TcpClient.GetStream());
+      obuf.WriteTo(m_Transport.GetStream());
 
       m_Home.OnTrace(ErlTraceLevel.Handshake, Direction.Outbound, () =>
           "sendChallengeAck(digest={1}, local={1}".Args(
@@ -800,7 +801,7 @@ namespace NFX.Erlang
       obuf.Write1(CHALLENGE_STATUS);
       obuf.Write(Encoding.ASCII.GetBytes(status));
 
-      obuf.WriteTo(m_TcpClient.GetStream());
+      obuf.WriteTo(m_Transport.GetStream());
 
       m_Home.OnTrace(ErlTraceLevel.Handshake, Direction.Outbound, () =>
           "sendStatus(status={0}, local={1}".Args(status, m_Home.NodeName.Value));

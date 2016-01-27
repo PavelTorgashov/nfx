@@ -1,0 +1,10 @@
+C:\Projects_CSharp\MQT\nfx\Source\ErlangSshTransport\bin\Debug\ErlangSshTransport.exe.config
+C:\Projects_CSharp\MQT\nfx\Source\ErlangSshTransport\obj\Debug\ErlangSshTransport.csprojResolveAssemblyReference.cache
+C:\Projects_CSharp\MQT\nfx\Source\ErlangSshTransport\bin\Debug\LICENSE.txt
+C:\Projects_CSharp\MQT\nfx\Source\ErlangSshTransport\bin\Debug\ErlangSshTransport.exe
+C:\Projects_CSharp\MQT\nfx\Source\ErlangSshTransport\bin\Debug\ErlangSshTransport.pdb
+C:\Projects_CSharp\MQT\nfx\Source\ErlangSshTransport\bin\Debug\NFX.dll
+C:\Projects_CSharp\MQT\nfx\Source\ErlangSshTransport\bin\Debug\NFX.pdb
+C:\Projects_CSharp\MQT\nfx\Source\ErlangSshTransport\bin\Debug\NFX.xml
+C:\Projects_CSharp\MQT\nfx\Source\ErlangSshTransport\obj\Debug\ErlangSshTransport.exe
+C:\Projects_CSharp\MQT\nfx\Source\ErlangSshTransport\obj\Debug\ErlangSshTransport.pdb

@@ -1,0 +1,6 @@
+C:\Projects_CSharp\MQT\nfx\Output\Debug\getdatetime.exe.config
+C:\Projects_CSharp\MQT\nfx\Output\Debug\getdatetime.exe
+C:\Projects_CSharp\MQT\nfx\Output\Debug\getdatetime.pdb
+C:\Projects_CSharp\MQT\nfx\Source\Tools\getdatetime\obj\Debug\getdatetime.csprojResolveAssemblyReference.cache
+C:\Projects_CSharp\MQT\nfx\Source\Tools\getdatetime\obj\Debug\getdatetime.exe
+C:\Projects_CSharp\MQT\nfx\Source\Tools\getdatetime\obj\Debug\getdatetime.pdb

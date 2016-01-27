@@ -1,0 +1,7 @@
+C:\Projects_CSharp\MQT\nfx\Output\Debug\LICENSE.txt
+C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.WinForms.XML
+C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.WinForms.dll
+C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.WinForms.pdb
+C:\Projects_CSharp\MQT\nfx\Source\NFX.WinForms\obj\Debug\NFX.WinForms.csprojResolveAssemblyReference.cache
+C:\Projects_CSharp\MQT\nfx\Source\NFX.WinForms\obj\Debug\NFX.WinForms.dll
+C:\Projects_CSharp\MQT\nfx\Source\NFX.WinForms\obj\Debug\NFX.WinForms.pdb

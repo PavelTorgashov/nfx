@@ -1,0 +1,2070 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NFX.WinForms</name>
+    </assembly>
+    <members>
+        <member name="M:NFX.WinForms.Controls.Balloon.#ctor">
+            <summary>
+            Creates new default balloon instance
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.Balloon.#ctor(System.Drawing.Rectangle,System.Drawing.Point,System.Drawing.Color)">
+            <summary>
+            Creates new balloon instance with specified coordinates
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.Balloon.#ctor(System.Drawing.Point,System.String,System.Drawing.Font,System.Drawing.Point,System.Drawing.Color)">
+            <summary>
+            Creates new instance of balloon infering its body size form supplied text
+            </summary>
+            <param name="bodyTopLeft">A position of balloon body</param>
+            <param name="text">Text to display inside balloon</param>
+            <param name="font">Balloon text font, may be null in which case default font is used</param>
+            <param name="targetPoint">A point where ballon leg should point</param>
+            <param name="color">Balloon color</param>
+        </member>
+        <member name="M:NFX.WinForms.Controls.Balloon.#ctor(System.String,System.Drawing.Font,System.Windows.Forms.Control,System.Int32,NFX.Geometry.MapDirection,System.Drawing.Color)">
+            <summary>
+            Creates new isntance of balloon,infering its body size form supplied text and linking balloon leg with control,
+            balloon will automatically follow control position on the screen even when it changes
+            </summary>
+            <param name="text">Text to display inside balloon</param>
+            <param name="font">Balloon text font, may be null in which case default font is used</param>
+            <param name="anchorControl">Control to anchor ballon leg to</param>
+            <param name="legLength">Length of balloon leg</param>
+            <param name="preferredPlacement">Where balloon should be placed when multiple placement positions are equaly available</param>
+            <param name="color">Balloon color</param>
+        </member>
+        <member name="M:NFX.WinForms.Controls.Balloon.FadeIn">
+            <summary>
+            Gradually shows balloon
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.Balloon.FadeOut">
+            <summary>
+            Gradually hides balloon
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.Balloon.FadeIn(System.Int32,System.Int32)">
+            <summary>
+            Gradually shows balloon
+            </summary>
+            <param name="interval">Timer interval</param>
+            <param name="steps">Showing steps count</param>
+        </member>
+        <member name="M:NFX.WinForms.Controls.Balloon.FadeOut(System.Int32,System.Int32)">
+            <summary>
+            Gradually hides balloon
+            </summary>
+            <param name="interval">Timer interval</param>
+            <param name="steps">Hiding steps count</param>
+        </member>
+        <member name="M:NFX.WinForms.Controls.Balloon.DetachAnchoredControl">
+            <summary>
+            Erases binding to anchored control 
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.Balloon.BodyRect">
+            <summary>
+            Screen coordinates of balloon main body rectangle
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.Balloon.TargetPoint">
+            <summary>
+            Screen point where balloon leg should point
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.Balloon.BalloonColor">
+            <summary>
+            Balloon color
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.Balloon.Beating">
+            <summary>
+            Indicates whether balloon beats like a heart
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.Balloon.BalloonTextAlignment">
+            <summary>
+            String alignment of text displayed in the balloon
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.Balloon.DisposeOnFadeOut">
+            <summary>
+            When true, disposes balloon right after fade-out sequence finishes
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.ChartKit.Temporal.CandleMidLineView">
+            <summary>
+            View of candles middle line
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.ChartKit.Temporal.CandleViewBase">
+            <summary>
+            Base class for View of candles/price based
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.ChartKit.Temporal.SeriesView`2">
+            <summary>
+            Denotes a view that visualizes series data in a chart
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.ChartKit.Temporal.SeriesView">
+            <summary>
+            Denotes a view that visualizes series data in a chart
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.ChartKit.Temporal.SeriesView.BuildElements(NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart,NFX.WinForms.Controls.ChartKit.Temporal.PlotPane,NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries,System.Int32)">
+            <summary>
+            Override to build elements that render the data by adding drawable elements to the chart.
+            Returns how many samples could fit
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.SeriesView.Name">
+            <summary>
+            Series name
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.SeriesView.Order">
+            <summary>
+            Series order in the list of orders
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.SeriesView.SampleWidth">
+            <summary>
+            Returns the width (horizontal size) of one sample, including any padding
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.SeriesView.Visible">
+            <summary>
+            Shows/hides all views
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.SeriesView.ShowYLevels">
+            <summary>
+            Shows/hides all views
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.SeriesView.PaneName">
+            <summary>
+            Returns the scale/pane name which is either assigned in .ctor or taken from DefaultPaneName. Series redering is directed in the named panes
+            Every pane has its own Y scale
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.SeriesView.DefaultPaneName">
+            <summary>
+            Returns the default scale/pane name which is used if PaneName is not assigned in .ctor Series redering is directed in the named panes
+            Every pane has its own Y scale
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.ChartKit.Temporal.SeriesView.YLevelElement">
+            <summary>
+            Represents an element for a single candle
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Elements.Element">
+            <summary>
+            Represents an element to be drawn in a host control
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Elements.Element.Repaint">
+            <summary>
+            Repaints this particular element instance
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Elements.Element.Invalidate">
+            <summary>
+            Invalidates space occupied by this element. 
+            This causes repaint of any elements overlapped by elements region
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Elements.Element.UpdateLocation(System.Int32,System.Int32)">
+            <summary>
+            Updates element location by delta x/y without causing invalidate
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Elements.Element.ZOrderChanged">
+            <summary>
+            Override to take action after element's Z-order changed
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Elements.Element.RegionChanged">
+            <summary>
+            Override to take action after element's region changed
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Elements.Element.VisibleChanged">
+            <summary>
+            Override to take action after element's visibility change
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Elements.Element.EnabledChanged">
+            <summary>
+            Override to take action after element's enabled state change
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Elements.Element.MouseTransparentChanged">
+            <summary>
+            Override to take action after element's mouse transparency change
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.Element.Host">
+            <summary>
+            References host control
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.Element.OwnedElements">
+            <summary>
+            Returns a list of elements owned by this element. Owned elements are deleted when this element is deleted.
+            Element ownership does not affect element drawing
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.Element.FieldControlContext">
+            <summary>
+            References control context for which element painting is done, may be null.
+            Part renderers may need control context to paint additional features like changed borders (when mofified etc.).
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.Element.ZOrder">
+            <summary>
+            Indicates whether an element is displayed
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.Element.Visible">
+            <summary>
+            Indicates whether an element is displayed
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.Element.Enabled">
+            <summary>
+            Indicates whether an element can receive events
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.Element.MouseTransparent">
+            <summary>
+            Indicates whether an element does not receive any mouse events
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.Element.Region">
+            <summary>
+            Provides graphical region- coordinates of the element without zoom. Even when host container is zoomed it has no effect on Region. Compare to DisplayRegion
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.Element.DisplayRegion">
+            <summary>
+            Provides graphical region- coordinates of the element in zoomed container. These coordinates are different from Region when Zoom!=1
+             because Region returns "normal"/non-zoomed coordinates. Mouse event handlers must use DisplayRegion because mouse is in screen coordinates
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.Element.Left">
+            <summary>
+            Shortcut property to element's region
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.Element.Top">
+            <summary>
+            Shortcut property to element's region
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.Element.Width">
+            <summary>
+            Shortcut property to element's region
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.Element.Height">
+            <summary>
+            Shortcut property to element's region
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.Element.MouseIsOver">
+            <summary>
+            Returns true if mouse is currently over the element
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.ChartKit.Temporal.SeriesView`2.BuildElements(NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart,NFX.WinForms.Controls.ChartKit.Temporal.PlotPane,NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries,System.Int32)">
+            <summary>
+            Builds elements that render the data by adding drawable elements to the chart.
+            Returns how many samples could fit
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.ChartKit.Temporal.CandleMidLineView.CandleMidLineElement">
+            <summary>
+            Represents an element for candle mid line
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.ChartKit.Temporal.CandleBuySellView">
+            <summary>
+            View of candles buy/sell bars line
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.ChartKit.Temporal.CandleBuySellView.CandleBuySellElement">
+            <summary>
+            Represents an element for candle buy sell
+            </summary>
+        </member>
+        <member name="F:NFX.WinForms.Controls.ChartKit.Temporal.ChartPaneMouseEventArgs.MouseEventType.Move">
+            <summary>
+            Mouse moved
+            </summary>
+        </member>
+        <member name="F:NFX.WinForms.Controls.ChartKit.Temporal.ChartPaneMouseEventArgs.MouseEventType.Click">
+            <summary>
+            Mouse was clicked
+            </summary>
+        </member>
+        <member name="F:NFX.WinForms.Controls.ChartKit.Temporal.ChartPaneMouseEventArgs.MouseEventType.ChartUpdate">
+            <summary>
+            Mouse did not change but chart content changed under the mouse as-if mouse moved
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.ChartKit.Temporal.TimeScalePane">
+            <summary>
+            Provides a viewport for horizntal scale
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Elements.ElementHostControl">
+            <summary>
+            Represents a host control for lightweight control-like elements. Elements can receive mouse input
+            however they do not support keyboard focus
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Elements.ElementHostControl.GetElementsInRegion(System.Drawing.Rectangle)">
+            <summary>
+            Returns list of elements inside specified region. Elements are returned in registration order
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Elements.ElementHostControl.GetElementsOutOfRegion(System.Drawing.Rectangle)">
+            <summary>
+            Returns list of elements that are completely outside of region
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Elements.ElementHostControl.GetElementsInRegion(System.Drawing.Rectangle,NFX.WinForms.Elements.ElementZOrder)">
+            <summary>
+            Returns list of elements inside specified region. Elements are returned in registration order
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Elements.ElementHostControl.GetClickableElementAt(System.Drawing.Point)">
+            <summary>
+            Finds an element (if any) which is clickable at a certain point
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Elements.ElementHostControl.ScrollElementsBy(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Scrolls elements by delta x/y and destroys those elements that are completely out of the viewport.
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Elements.ElementHostControl.DeleteAllElements(System.Func{NFX.WinForms.Elements.Element,System.Boolean})">
+            <summary>
+            Deletes all elements efficiently. Calls Dispose() for each element 
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Elements.ElementHostControl.UpdateZoom(System.Single)">
+            <summary>
+            Updates zoom value without invalidation of the whole control, returns true if invalidation is needed(value changed) 
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.ElementHostControl.Elements">
+            <summary>
+            Provides access to hosted elements
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.ElementHostControl.MouseEnteredElement">
+            <summary>
+            Returns mouse-entered element or null
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.ElementHostControl.CurrentFontHeight">
+            <summary>
+            Returns pixel height of current font
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.ElementHostControl.Zoom">
+            <summary>
+            Provides access to zoom coefficient
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.ChartKit.Temporal.TimeScalePane.TimeCursorElement">
+            <summary>
+            Represents an element for candle mid line
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries">
+            <summary>
+            Base for time series. This class is NOT thread-safe
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries.LastXSamplesData(System.Int32)">
+            <summary>
+            Returns last X data samples in the series in natural order. It may return less samples than X
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries.GetMaxSampleWidth(System.Boolean)">
+            <summary>
+            Returns the maximum width of one sample extracted from all views
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries.GetPaneNames(System.Boolean)">
+            <summary>
+            Gets a list of distinct pane names ordered by occurence in this and all child series if includeChildren is true
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries.BuildViews(NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart,System.Int32)">
+            <summary>
+            Returns how many samples fit
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries.Add(NFX.Financial.Market.ITimeSeriesSample)">
+            <summary>
+            Adds sample to the series at the appropriate position.
+            This method respects MaxSamples and first deletes older samples making room for new additions
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries.Delete(NFX.Financial.Market.ITimeSeriesSample)">
+            <summary>
+            Deletes sample from the set. This method is not efficient as it does linear list scan
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries.Parent">
+            <summary>
+            Returns parent of this series or null
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries.Name">
+            <summary>
+            Series name
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries.Order">
+            <summary>
+            Series order in the list of orders
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries.YLevels">
+            <summary>
+            Returns the registry of horizontal levels on Y access
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries.Children">
+            <summary>
+            Returns the children of this series
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries.Views">
+            <summary>
+            Views that visualize the series data (may be more than one),
+            for example a market data may have 3 views that show open.close and volume as 3 views based on the same source
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries.Visible">
+            <summary>
+            Shows/hides all views
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries.SampleCount">
+            <summary>
+            Sample count in this series, excluding children
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries.Data">
+            <summary>
+            Returns data in the series in natural time order
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries.DataReveresed">
+            <summary>
+            Returns data in the series in the reveresed time order
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries.YLevel">
+            <summary>
+            Represents a named level that gets represented on a vertical scale, usually as the horizontal line
+            that goes across the chart
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries.YLevel.Value">
+            <summary>
+            The value is in primary series unit
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeries`1">
+            <summary>
+            TimeSeries with types TSample
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.ChartKit.Temporal.PlotPane">
+            <summary>
+            Provides a viewport for chart plot area for the named pane
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart">
+            <summary>
+            Implements a Chart control base. 
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart.NotifySeriesChange(System.Boolean)">
+            <summary>
+            Notifies chart series that data/metadata has changed in series model/view properties 
+            This method is NOT THREAD SAFE and runs in GUI thread.
+            This method does call aggregation, that is - when this method is called many times within timespan it will rebuild chart only once at the end.
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart.Configure(NFX.Environment.IConfigSectionNode)">
+            <summary>
+            Reads column configuration from config node that should contain [grid] sub elemnt/s. The id attribute should either match or be absent
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart.PersistConfiguration(NFX.Environment.ConfigSectionNode)">
+            <summary>
+            Persists column configuration to config node. [grid] subnode will be created under specified node pr reused if one already exists
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart.BuildDefaultStyle(NFX.WinForms.Controls.Style)">
+            <summary>
+            Builds default style for data cells in non-selected rows
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart.BuildDefaultRulerStyle(NFX.WinForms.Controls.Style)">
+            <summary>
+            Builds default style for rulers
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart.BuildDefaultPlotStyle(NFX.WinForms.Controls.Style)">
+            <summary>
+            Builds default style for data plots
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart.MapPaneYToValue(NFX.WinForms.Controls.ChartKit.Temporal.PlotPane,System.Int32)">
+            <summary>
+            Maps mouse Y coordinate per pane's vertical scale value
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart.MapXToSample(System.Int32)">
+            <summary>
+            Maps X coordinate to primary series sample
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart.LayoutSubControls(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Performs layout of sub controls, such as element host, scroll bars etc.. 
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart.ID">
+            <summary>
+            Specifies ID for this chart instance. IDs are needed for chart config persistence
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart.ReadOnly">
+            <summary>
+            Determines whether chart data can be modified (if chart supports it)
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart.Style">
+            <summary>
+            Returns a default style object for all elements in the chart 
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart.RulerStyle">
+            <summary>
+            Returns the default style object for all rulers in the chart
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart.PlotStyle">
+            <summary>
+            Returns the style object for default plots 
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart.Series">
+            <summary>
+            Series that this chart shows 
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart.HScrollPosition">
+            <summary>
+            Horizontal scroll position in samples
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart.AutoScroll">
+            <summary>
+            When true, auto scrolls to the end of time series
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart.SampleFitAcrossCount">
+            <summary>
+            Returns the number of samples that can fit across the cahrt
+            </summary>
+        </member>
+        <member name="E:NFX.WinForms.Controls.ChartKit.Temporal.TimeSeriesChart.ChartPaneMouseEvent">
+            <summary>
+            Called when user moves the mouse over chart pane
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.ChartKit.Temporal.CandleView">
+            <summary>
+            View of candles
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.ChartKit.Temporal.CandleView.CandleElement">
+            <summary>
+            Represents an element for a single candle
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.ChartKit.Temporal.CandleTimeSeries">
+            <summary>
+            Stores Candle time series data
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.ComboBoxEx">
+            <summary>
+            A ComboBox that allows to specify the color of the control.
+            Note that the ForeColor of the parent ComboBox only paints the drop-down list
+            but not the face color of the ComboBox itself.
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.HAlignment">
+            <summary>
+            Defines horizontal alignment 
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.BGKind">
+            <summary>
+            Defines types of background brushes
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.SortDirection">
+            <summary>
+            Defines directions for sorting in grid columns
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.GridKit.CellElement">
+            <summary>
+            Represents a cell in a grid
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.CellElement.RepresentValueAsString(System.Object)">
+            <summary>
+            Converts/formats cell object value as string so it can be painted. This implementation relies on column to convert the value.
+            Override to perform cell-specific conversions/formatting
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.CellElement.DispatchSelection">
+            <summary>
+            Dispatches action that this cell element was selected
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.CellElement.Row">
+            <summary>
+            References row that this cell is for, null if header row
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.CellElement.Column">
+            <summary>
+            References column that this cell is for
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.CellElement.Grid">
+            <summary>
+            References grid
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.CellElement.Style">
+            <summary>
+            Returns a style for this cell. Cell style inherit from column style, which in turn inherits from grid style.
+            Changing cell style does not automatically repaint the element 
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.CellElement.Value">
+            <summary>
+            Returns value displayed in this cell or null. You can call RepresentValueAsString(Value) to get a string representation of this cell
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.GridKit.CellView">
+            <summary>
+            Provides a viewport for grid cells
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.GridKit.Column">
+            <summary>
+            Represents grid column definition
+            </summary>
+        </member>
+        <member name="F:NFX.WinForms.Controls.GridKit.Column.ArbitraryData">
+            <summary>
+            Handy field for attaching some business-related object to a column
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Column.MakeCellElementInstance(System.Object)">
+            <summary>
+            Override to create instance of cell view specific to particular column and row
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Column.RepresentValueAsString(System.Object,System.Object)">
+            <summary>
+            Converts/formats cell object value as string so it can be painted. This implementation relies on FormatString.
+            Row instanced is also passed so formatting may be done per particular row state
+            Override to perform cell-specific conversions/formatting
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Column.DispatchCellSelection(NFX.WinForms.Controls.GridKit.CellElement)">
+            <summary>
+            Dispatches appropriate events and performs row selection in the grid
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Column.RepositionTo(NFX.WinForms.Controls.GridKit.Column)">
+            <summary>
+            Repositions this column in place of other
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Column.OnCellSelection(NFX.WinForms.Controls.GridKit.CellElement,NFX.WinForms.Controls.GridKit.CellElement)">
+            <summary>
+            Invokes event
+            </summary>
+        </member>
+        <member name="E:NFX.WinForms.Controls.GridKit.Column.CellSelection">
+            <summary>
+            Occurs when user select a cell that belongs to this column
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Column.ID">
+            <summary>
+            Provides unique column ID
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Column.Description">
+            <summary>
+            Provides column description
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Column.FieldIndex">
+            <summary>
+            Returns field index - this may be handy for associating column in array position so 
+            column accessors may read data from list/array by index for faster response times
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Column.Title">
+            <summary>
+            Provides the title of the column. If title not set the column ID is returned
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Column.Width">
+            <summary>
+            Gets/sets columns width
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Column.MinWidth">
+            <summary>
+            Gets/sets columns minimum width
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Column.FormatString">
+            <summary>
+            Provides column formatting string
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Column.Visible">
+            <summary>
+            Determines whether column is shown in grid
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Column.SortingAllowed">
+            <summary>
+            Determines whether this column may be sorted by
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Column.SortDirection">
+            <summary>
+            Returns/Sets sort direction for this column. 
+            Grid and column sorting must be allowed otherwise setting this property has no effect and get
+             always returns SortDirection.None
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Column.HasCellSelection">
+            <summary>
+            Indicartes whether this column has selected cell
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Column.Style">
+            <summary>
+            Returns style for data cells in this column
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Column.HeaderStyle">
+            <summary>
+            Returns style for header cell in this column
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Column.SelectedStyle">
+            <summary>
+            Returns style for cell in this column for selected row
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.GridKit.GetValueHandler`2">
+            <summary>
+            Event handler that gets data for columns from rows
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.GridKit.GetHasValueHandler`2">
+            <summary>
+            Event handler that determine whether row has data for this column
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.GridKit.GetCommentHandler`1">
+            <summary>
+            Event handler that gets comment value(if any) for the cell 
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.GridKit.Column`2">
+            <summary>
+            Represents typed grid column definition
+            </summary>
+        </member>
+        <member name="F:NFX.WinForms.Controls.GridKit.Column`2.GetValue">
+            <summary>
+            Invoked to extract data value from row 
+            </summary>
+        </member>
+        <member name="F:NFX.WinForms.Controls.GridKit.Column`2.GetHasValue">
+            <summary>
+            Invoked to determine whether a row has data for this column 
+            </summary>
+        </member>
+        <member name="F:NFX.WinForms.Controls.GridKit.Column`2.GetComment">
+            <summary>
+            Invoked to get comment value(if any) for the cell  
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Column`2.GetValueFromRow(`0)">
+            <summary>
+            Returns value for specified row. Base implementation calls event handler
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Column`2.HasValueInRow(`0)">
+            <summary>
+            Returns true when specified row has value. Base implementation calls event handler
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Column`2.GetCommentFromRow(`0)">
+            <summary>
+            Returns comment for row
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.GridKit.ColumnResizeElement">
+            <summary>
+            Represents a cell in a grid
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.GridKit.CommentElement">
+            <summary>
+            Represents a comment hover element for grid
+            </summary>
+        </member>
+        <member name="F:NFX.WinForms.Controls.GridKit.NotifyDataSourceChangedEventArgs.Row">
+            <summary>
+            Returns row that changed in data source or null
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.GridKit.CellSelectionEventHandler">
+            <summary>
+            Event handler that gets called after usee select a cell
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.GridKit.Grid">
+            <summary>
+            Implements a Grid control base. DataRowSource is a list of row objects - if it changes in separate thread then it is row's responsibility to synchronize
+             accessors as this grid makes no assumptions about thread safety
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Grid.SendDataSourceChangedNotification(System.Object)">
+            <summary>
+            Notifies grid that data/metadata(such as comment) has changed for specified row, and row has to be redrawn if it is visible. 
+            If row is null the grid is rebuilt. Pass null when rows where added or deleted to/from grid data source
+            Returns true if grid was rebuilt when row was visible or null.
+            This method is NOT THREAD SAFE and runs in GUI thread.
+            This method does call aggregation, that is - when this method is called many times within timespan it will rebuild grid only once at the end.
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Grid.SelectRow(System.Object)">
+            <summary>
+            Adds row to selection. If row is not in grid's source rowset then it will never be highlighted in grid (because it never shows in grid then)
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Grid.UnSelectRow(System.Object)">
+            <summary>
+            Deletes row from selection. Returns true if row was selected
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Grid.IsRowSelected(System.Object)">
+            <summary>
+            Returns true if row is selected in grid
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Grid.UnSelectAllRows">
+            <summary>
+            Unselects all rows
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Grid.TryFindColumnByID(System.String)">
+            <summary>
+            Tries to find a column by its' id or returns null
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Grid.Configure(NFX.Environment.IConfigSectionNode)">
+            <summary>
+            Reads column configuration from config node that should contain [grid] sub elemnt/s. The id attribute should either match or be absent
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Grid.PersistConfiguration(NFX.Environment.ConfigSectionNode)">
+            <summary>
+            Persists column configuration to config node. [grid] subnode will be created under specified node pr reused if one already exists
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Grid.GetRowHeight(System.Object)">
+            <summary>
+            Returns height for a row, if row==null then header row assumed (where column titles are displayed).
+            This implementation returns Data/Header RowHeight properties. Override to do conditional row measurements depending on row instance 
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Grid.BuildDefaultStyle(NFX.WinForms.Controls.Style)">
+            <summary>
+            Builds default style for data cells in non-selected rows
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Grid.BuildDefaultHeaderStyle(NFX.WinForms.Controls.Style)">
+            <summary>
+            Builds default style for header row cells - column titles
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Grid.BuildDefaultSelectedStyle(NFX.WinForms.Controls.Style)">
+            <summary>
+            Builds default style for data cells in selected rows
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Grid.DispatchCellSelection(NFX.WinForms.Controls.GridKit.CellElement)">
+            <summary>
+            Dispatches appropriate events and performs row selection in the grid
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Grid.BeginBatchChange">
+            <summary>
+            Marks the beginning of the series of changes that are going to be performed on the grid so
+             the grid does not have to be rebuild unnecessarily many times.
+            The complementary method is EndBatchChange() that does rebuild the grid IF it is needed.
+            These methods respect call nesting, so only the last call to EndBatchChange() would result in rebuild
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Grid.EndBatchChange">
+            <summary>
+            Complementary method for BeginBatchChange()
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Grid.RepositionColumn(NFX.WinForms.Controls.GridKit.Column,NFX.WinForms.Controls.GridKit.Column)">
+            <summary>
+            Repositions one column to the position of another
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Grid.CopyToClipboard">
+            <summary>
+            Copies selection to clipboard
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Grid.LayoutSubControls">
+            <summary>
+            Performs layout of sub controls, such as element host, scroll bars etc.. 
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.GridKit.Grid.OnCellSelection(NFX.WinForms.Controls.GridKit.CellElement,NFX.WinForms.Controls.GridKit.CellElement)">
+            <summary>
+            Invokes cell selection  event
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.ID">
+            <summary>
+            Specifies ID for this grid instance. IDs are needed for grid config persistence
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.ReadOnly">
+            <summary>
+            Determines whether grid data can be modified
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.MultiSelect">
+            <summary>
+            Determines whether grid supports selection of more than one row
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.MultiSelectWithCtrl">
+            <summary>
+            Determines whether grid requires control to be pressed for multi-select
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.CellSelectionAllowed">
+            <summary>
+            Determines whether grid supports cell selection. Cell selection only works when Multiselect=false
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.ColumnResizeAllowed">
+            <summary>
+            Determines whether user can resize columns
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.ColumnRepositionAllowed">
+            <summary>
+            Determines whether user can reposition columns
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.SortingAllowed">
+            <summary>
+            Determines whether user can sort data by clicking on column headers
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.RepositioningColumn">
+            <summary>
+            Returns a column being repositioned
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.ResizingColumn">
+            <summary>
+            Returns a column being resized
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.UserChangingLayout">
+            <summary>
+            Indicates whether user is changing layout of columns or rows such as size or column positions
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.SelectedCell">
+            <summary>
+            Returns the last cell that was selected in the grid  
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.Style">
+            <summary>
+            Returns a style object for all data cells in the grid 
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.HeaderStyle">
+            <summary>
+            Returns a style object for all header cells in the grid
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.SelectedStyle">
+            <summary>
+            Returns a style object for all data cells in the grid which are in selected rows
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.DataRowHeight">
+            <summary>
+            Provides default height for all data rows
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.HeaderRowHeight">
+            <summary>
+            Provides default height for header row (column captions)
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.SelectedRows">
+            <summary>
+            Enumerates selected rows
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.DataRowSource">
+            <summary>
+            Binds grid to a source of rows
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.Columns">
+            <summary>
+            Accesses columns
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.GridKit.Grid.CellView">
+            <summary>
+            Returns reference to cellview - an area where cells are displayed
+            </summary>
+        </member>
+        <member name="E:NFX.WinForms.Controls.GridKit.Grid.DataRowSourceChanged">
+            <summary>
+            Occurs after data row source has changed and grid displays whole different dataset
+            </summary>
+        </member>
+        <member name="E:NFX.WinForms.Controls.GridKit.Grid.RowSelectionChanged">
+            <summary>
+            Occurs after rows have been selected/unselected
+            </summary>
+        </member>
+        <member name="E:NFX.WinForms.Controls.GridKit.Grid.ColumnsChanged">
+            <summary>
+            Occurs after columns have been added/deleted
+            </summary>
+        </member>
+        <member name="E:NFX.WinForms.Controls.GridKit.Grid.ColumnAttributesChanged">
+            <summary>
+            Occurs after columns attributes changed such as visibility,width, titile etc..
+            </summary>
+        </member>
+        <member name="E:NFX.WinForms.Controls.GridKit.Grid.ColumnSortChanged">
+            <summary>
+            Occurs after columns sort changed 
+            </summary>
+        </member>
+        <member name="E:NFX.WinForms.Controls.GridKit.Grid.NotifyDataSourceChanged">
+            <summary>
+            Occurs when external data source changes and notifies the grid
+            </summary>
+        </member>
+        <member name="E:NFX.WinForms.Controls.GridKit.Grid.CellSelection">
+            <summary>
+            Occurs when user selects the cell
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.GridKit.RowMap">
+            <summary>
+            Holds mappings of rows to grid vertical plane
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.GridKit.RowMapEntry">
+            <summary>
+            Contains mapping information of rows to vertical grid plane
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.Style">
+            <summary>
+            Defines a style used for painting and layout
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.Style.#ctor(System.Windows.Forms.Control,NFX.WinForms.Controls.Style)">
+            <summary>
+            Creates a style in a context of control and parent. If an attribute is not defined in this instance it is tried to be fetched from parent.
+            If parent is not available then control context is used if it is not null for some properties like Font and BGColor. Both context and parent may be null
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Controls.Style.Assign(NFX.WinForms.Controls.Style)">
+            <summary>
+            Copies attributes from another style
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.Style.ControlContext">
+            <summary>
+            Returns a context/control that this style is in. May be null 
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.Style.Parent">
+            <summary>
+            Returns parent style definition or null
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.Style.HAlignment">
+            <summary>
+            Defines text horizontal alignment. Call corresponding Clear method to delete attribute in this instance
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.Style.BGKind">
+            <summary>
+            Defines background kind. Call corresponding Clear method to delete attribute in this instance
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.Style.BGColor">
+            <summary>
+            Defines background color. Call corresponding Clear method to delete attribute in this instance
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.Style.BGColor2">
+            <summary>
+            Defines second background color used by gradients. Call corresponding Clear method to delete attribute in this instance
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.Style.BGHatchColor">
+            <summary>
+            Defines background hatch color. Call corresponding Clear method to delete attribute in this instance
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.Style.BGHatchStyle">
+            <summary>
+            Defines background hatch style. Call corresponding Clear method to delete attribute in this instance
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.Style.Padding">
+            <summary>
+            Defines padding - an extra space inside of container. Call corresponding Clear method to delete attribute in this instance
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.Style.BorderLeft">
+            <summary>
+            Defines left border style. Call corresponding Clear method to delete attribute in this instance
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.Style.BorderRight">
+            <summary>
+            Defines right border style. Call corresponding Clear method to delete attribute in this instance
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.Style.BorderTop">
+            <summary>
+            Defines top border style. Call corresponding Clear method to delete attribute in this instance
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.Style.BorderBottom">
+            <summary>
+            Defines bottom border style. Call corresponding Clear method to delete attribute in this instance
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Controls.Style.Font">
+            <summary>
+            Defines font information. Null is never returned but may be set so it resets attribute in this instance
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Controls.LineStyle">
+            <summary>
+            Defines a style for line
+            </summary>
+        </member>
+        <member name="F:NFX.WinForms.Controls.LineStyle.DashStyle">
+            <summary>
+            Specifies type of dashing used 
+            </summary>
+        </member>
+        <member name="F:NFX.WinForms.Controls.LineStyle.Color">
+            <summary>
+            Specifies line color
+            </summary>
+        </member>
+        <member name="F:NFX.WinForms.Controls.LineStyle.Width">
+            <summary>
+            Specifies line width
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Elements.ComboBoxElement">
+            <summary>
+            Represents a combo box element
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.ComboBoxElement.Button">
+            <summary>
+            Provides access to drop-down button inner element
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Elements.ComboButtonElement">
+            <summary>
+            Represents a combo box button element
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Elements.PressableElement">
+            <summary>
+            Represents an elemnt that may be pressed down by the mouse. Mostly used as a button base
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.PressableElement.Pressed">
+            <summary>
+            Indicates whether an element is pressed
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Elements.ElementList">
+            <summary>
+            Represents a list of elements
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Elements.ElementZOrder">
+            <summary>
+            Defines a sequence of element enumeration
+            </summary>
+        </member>
+        <member name="F:NFX.WinForms.Elements.ElementZOrder.TopToBottom">
+            <summary>
+            This is used for mouse events, top -> bottom
+            </summary>
+        </member>
+        <member name="F:NFX.WinForms.Elements.ElementZOrder.BottomToTop">
+            <summary>
+            Used for painting, bottom -> top
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Elements.RadioGroupElement">
+            <summary>
+            Represents a group of radio buttons
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Elements.RadioGroupElement.CheckButtonWithKey(System.Object)">
+            <summary>
+            Tries to find a button with specified key and checks it. Returns true if button could be found
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.RadioGroupElement.CheckedElement">
+            <summary>
+            Returns selected item or null
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.RadioGroupElement.UpdateCount">
+            <summary>
+            Returns nesting depth of BeginUpdate() call
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Elements.SymbolElement">
+            <summary>
+            Symbol elements represent simple glyphs like circle, triangle etc..
+            This element is currently not themed
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Elements.TextLabelElement.IsHyperlink">
+            <summary>
+            Indicates whether this label element is a hyperlink and should raise OnHyperlink event
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.WFormsException">
+            <summary>
+            Base exception thrown by NFX.WinForms assembly
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.IFieldControlContext">
+            <summary>
+            Describes an entity, usually a control-derivative, that provides field-bound view properties.
+             <para>This interface is mostly used for theme's parts rendering as parts painting may depend on control state
+             such as "valid/invalid","modified" etc.  </para>
+            <para> Usage of this interface is a better solution rather than passing those characteristics to every part rendering function
+             because the later is much less flexible.</para> 
+             <para>When new property needs to be added in future,
+             only interface and implementing classes need to be changed, 
+             thus existing rendering code will not break and may elect to completely ignore new context characteristics. </para>
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.BaseApplication">
+            <summary>
+            Provides base implementation of IApplication for WinForms. This class is NOT thread safe
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.BaseApplication.#ctor(System.String[],NFX.Environment.ConfigSectionNode)">
+            <summary>
+            Takes optional args[] and root configuration. If configuration is null then
+             application is configured from a file co-located with entry-point assembly and
+              called the same name as assembly with '.config' extension, unless args are specified and "/config file"
+              switch is used in which case 'file' has to be locatable and readable.
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.BaseApplication.Destroy">
+            <summary>
+            Destroys application effectively finalizing all services
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.BaseApplication.SetTheme(System.Type)">
+            <summary>
+            Sets application theme, pass null to select default theme
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.BaseApplication.RefreshAllForms">
+            <summary>
+            Refreshes all open application forms
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.BaseApplication.Instance">
+            <summary>
+            References a singleton instance of BaseApplication
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.BaseApplication.ContextAvailable">
+            <summary>
+            Indicates whether application context was allocated  
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.BaseApplication.AppName">
+            <summary>
+            Returns application name
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.BaseApplication.IsActive">
+            <summary>
+            Returns true when application instance is active and working. This property returns false as soon as application finalization starts on shutdown
+            Use to exit long-running loops and such
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.BaseApplication.Logger">
+            <summary>
+            References application logger
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.BaseApplication.Instruments">
+            <summary>
+            References application instrumentation
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.BaseApplication.Throttles">
+            <summary>
+            References application throttling
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.BaseApplication.CommandArgs">
+            <summary>
+            References command line arguments configuration, so one can use it as:
+             <code>
+              if (NFXApplication.Instance.CommandArgs["DeleteFiles"].Exists)
+              {
+                // this will run if process was invoked like so: process.exe /deleteFiles 
+              }
+             </code>
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.BaseApplication.CmdArgs">
+            <summary>
+            References command line arguments configuration, so one can use it as:
+             <code>
+              if (NFXApplication.Instance.CommandArgs["DeleteFiles"].Exists)
+              {
+                // this will run if process was invoked like so: process.exe /deleteFiles 
+              }
+             </code>
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.BaseApplication.ConfRoot">
+            <summary>
+            Provides access to configuration root for the whole application
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.BaseApplication.Data">
+            <summary>
+            References application data store
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.BaseApplication.Objects">
+            <summary>
+            References application object store. Objects will survive application termination 
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.BaseApplication.Glues">
+            <summary>
+            References glue that can be used to connect to remote entities
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.BaseApplication.Security">
+            <summary>
+            References security manager that performs user authentication based on passed credentials and other security-related global tasks
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.BaseApplication.Time">
+            <summary>
+            References time source - an entity that supplies local and UTC times. The concrete implementation
+             may elect to get accurate times from the network or other external precision time sources (i.e. NASA atomic clock)
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.BaseApplication.Theme">
+            <summary>
+            Specifies current application theme. If this property was never set, a default theme will be created
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Themes.IPartRenderer">
+            <summary>
+            Interfaces a class that renders parts - elements that controls are rendered from
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Themes.IPartRenderer.TextBox(System.Drawing.Graphics,System.Drawing.Rectangle,System.Boolean,NFX.WinForms.IFieldControlContext,System.Drawing.Bitmap)">
+            <summary>
+            Draws text box control. Due to rendering complexity of text boxes (as compared to labels), rendering is performed
+             by the same class that editing is performed in (usually TextBox-derivative) so here text is rendered from a pre-rendered image.
+            Parameter "textImage" may be null in which case no text is drawn
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Themes.IPartRenderer.ComboBoxLookupForm(System.Windows.Forms.Form,System.Drawing.Graphics)">
+            <summary>
+            Draws background decorations on combo lookup form
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Themes.IPartRenderer.Balloon(System.Drawing.Graphics,System.Drawing.Rectangle,System.Drawing.Point,System.Drawing.Color,NFX.WinForms.IFieldControlContext)">
+            <summary>
+            Draws a callout balloon with specified coordinates
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Themes.IPartRenderer.CheckBoxMetrics">
+            <summary>
+            Returns metrics of check box adornments/padding - decorations drawn around real check box
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Themes.IPartRenderer.TextBoxMetrics">
+            <summary>
+            Returns metrics of text box adornments - artificial niceties drawn around real text box
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Themes.IPartRenderer.FocusedTextBoxMetrics">
+            <summary>
+            Returns metrics of focused text box adornments - artificial niceties drawn around real text box
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Themes.IPartRenderer.ComboButtonPadding">
+            <summary>
+            Returns padding for combo button placement inside text box
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Themes.IPartRenderer.ComboTextBoxWidthPercent">
+            <summary>
+            Returns the width that text box shall take. 1.0 = 100% = whole control width
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Themes.IPartRenderer.ComboButtonSizePercent">
+            <summary>
+            Returns the size that combo button shall take. 1.0 = 100% = all minimum control dimension
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Themes.ITheme">
+            <summary>
+            Represents a theme
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Utils">
+            <summary>
+            Provides various windows functionality
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Utils.SetUSCulture">
+            <summary>
+            Initializes culture to US/English
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Utils.IsControlDesignerHosted(System.Windows.Forms.Control)">
+            <summary>
+            Determines if control is being used within designer
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Utils.FindParentRecord(System.Windows.Forms.Control)">
+            <summary>
+            Walks control parent tree and tries to find a record in the inner-most node. 
+            Returns null if nothing could be found
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Utils.FindParentRecordSurrogateTypeName(System.Windows.Forms.Control)">
+            <summary>
+            Walks control parent tree and tries to find a surrogate record type name in the inner-most node. 
+            Returns null if nothing could be found
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Utils.AllChildControls(System.Windows.Forms.Control)">
+            <summary>
+            Walks the whole child control tree and returns all controls as a flat enumeration
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Utils.AttachChildControlsToParentRecord(System.Windows.Forms.Control)">
+            <summary>
+            Walks child controls and attaches controls to parent record
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Utils.DrawStringWithBackground(System.Drawing.Graphics,System.String,System.Drawing.Font,System.Drawing.Brush,System.Drawing.Brush,System.Int32,System.Int32)">
+            <summary>
+            Draws string on the background rectangle
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Utils.CreateGrayscaleBitmap(System.Drawing.Bitmap)">
+            <summary>
+            Converts a bitmap into grayscale mode
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Utils.DrawUnderline(System.Drawing.Graphics,System.Drawing.Point,System.Int32,System.Drawing.Color)">
+            <summary>
+            Draws an underline. Similar concept to VS or MS Word
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Utils.DrawUnderlineRectangle(System.Drawing.Graphics,System.Drawing.Rectangle,System.Drawing.Color)">
+            <summary>
+            Draws a rectangle that looks like underline which looks similar to VS or MS Word
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Utils.DrawTextHighlight(System.Drawing.Graphics,System.Drawing.Rectangle,System.Drawing.Font,System.String,System.Drawing.StringAlignment,System.Drawing.Color)">
+            <summary>
+            Draws hand-drawn-looking highlighter color stick lines on top of text. The text itself is not drawn.
+            Text may span multiple lines
+            </summary>
+            <param name="gr">Graphical context</param>
+            <param name="rect">Bounding rectangle</param>
+            <param name="font">Font to measure text in</param>
+            <param name="text">Text to measure, the text is not drawn rather charecters position is determined</param>
+            <param name="align">Text alignment</param>
+            <param name="color">Color of highlighter including opacity</param>
+        </member>
+        <member name="M:NFX.WinForms.Utils.GetFocusedControl">
+            <summary>
+            Returns focused .NET control or null
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Views.ComboBoxLookupForm">
+            <summary>
+            Represents internal popup form displayed when cmbo-box drop-down is activated
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Views.Design.FieldContextControlDesigner">
+            <summary>
+            Custom designer for FieldContextControl and derived classes
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Views.Design.FieldViewDesigner">
+            <summary>
+            Custom designer for FieldView control and derived classes
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Views.Design.RecordContextPanelDesigner">
+            <summary>
+            Custom designer for RecordContextPanel and derived classes
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Views.ControlType">
+            <summary>
+            Types of data-entry control
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Views.CaptionPlacement">
+            <summary>
+            Determines where field caption is placed relative to data entry area
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Views.TextHAlignment">
+            <summary>
+            Types of text alignment for text and combo boxes.
+            Supports both RTL sensitive and insensitive modes
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Views.FieldContextControl">
+            <summary>
+            Provides field controller attachable base view control functionality
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.FieldContextControl.BeginInit">
+            <summary>
+            Starts control initialization during which controller attachment is suspended 
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.FieldContextControl.EndInit">
+            <summary>
+            Finishes control initialization and resumes controller attachment
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.FieldContextControl.TryAttachModel">
+            <summary>
+            Tries to attach control to controller referenced by AttachToField property or if AttachToField is blank, by AttachToRecord/AttachToFieldName properties 
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.FieldContextControl.AttachModel">
+            <summary>
+            Attaches control to controller referenced by AttachToField property or if AttachToField is blank, by AttachToRecord/AttachToFieldName properties 
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.FieldContextControl.AttachModel(NFX.RecordModel.Field)">
+            <summary>
+            Attaches control to a particular field controller 
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.FieldContextControl.AttachModel(NFX.RecordModel.Record,System.String)">
+            <summary>
+            Attaches control to particular field controller identified by FieldName belonging to referenced Record instance
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.FieldContextControl.DetachModel">
+            <summary>
+            Detaches controller. Does nothing if not attached
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.FieldContextControl.ClearValue">
+            <summary> 
+            Clears value of attached field effectively setting HasValue to false.
+            Does nothing if no field is currently attached
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.FieldContextControl.CreateFieldBinding">
+            <summary>
+            Template field binding factory method 
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.FieldContextControl.ReadonlyChanged">
+            <summary>
+            Override to take action when Readonly property changes
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.FieldContextControl.DefaultOnPaintImplementation(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Provides default painitng implementation
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.Initializing">
+            <summary>
+            Indicates whether control is being initialized by a call to BeginInit()
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.ControllerBinding">
+            <summary>
+            Provides access to internal controller binding. Binding implementations depend on concrete view control 
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.ModelAttached">
+            <summary>
+            Indicates whether control is attached to model
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.AttachToParentRecord">
+            <summary>
+            Determines whether control auto-attaches to a record specified in parent control
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.AttachToField">
+            <summary>
+            Specifies a field this control will be connected with
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.AttachToRecord">
+            <summary>
+            Specifies a record this control will be connected with
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.AttachToFieldName">
+            <summary>
+            Specifies field by name this control will be connected with
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.Field">
+            <summary>
+            Controller field this control is connected to. May be null
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.Record">
+            <summary>
+            Controller record this control is connected to. May be null
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.Modified">
+            <summary>
+            Indicates whether this field was modified
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.GUIModified">
+            <summary>
+            Indicates whether this field was modified from GUI
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.Valid">
+            <summary>
+            Indicates whether field's data is valid
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.Validated">
+            <summary>
+            Indicates whether field's data was validated
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.Marked">
+            <summary>
+            Indicates whether field was marked
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.Required">
+            <summary>
+            Indicates whether field value is required
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.ReadonlyField">
+            <summary>
+            Indicates whether field value is readonly
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.Visible">
+            <summary>
+            Determines whether this control is visible
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.Enabled">
+            <summary>
+            Determines whether this control is enabled
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.Applicable">
+            <summary>
+            Determines whether this control applies (can be interacted at all). Usually this property is
+            acted upon  by an application business rules
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.Readonly">
+            <summary>
+            Determines whether control is available for data input.
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.IsApplicable">
+            <summary>
+            Determines whether control is really applicable. 
+            Item applicability is governed by parent context and may differ from instance's Applicable property 
+            <see>Applicable</see>
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.IsVisible">
+            <summary>
+            Determines whether control is really visible. 
+            Item visibility is governed by parent context and may differ from instance's Visible property 
+            <see>Visible</see>
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.IsEnabled">
+            <summary>
+            Determines whether control is really enabled. 
+            Item enabled state is governed by parent context and may differ from instance's Enabled property 
+            <see>Enabled</see>
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.IsReadonly">
+            <summary>
+            Determines whether control is really readonly. 
+            Item readonly state is governed by parent context and may differ from instance's Readonly property 
+            <see>Readonly</see>
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.Multiline">
+            <summary>
+            Indicates whether control is able to display multiple lines of text
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.HasValue">
+            <summary>
+            Indicates whether a field this control is attached to has a value (aka. DB NULL/NOT NULL)
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.MarkerColor">
+            <summary>
+            Specifies color for text highlights when field is marked
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.MarkerIntensity">
+            <summary>
+            Specifies intenisty (marker pressure) for text highlights when field is marked
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldContextControl.CallDefaultPaintImplementation">
+            <summary>
+            Internal framework property, return false to provide custom control painting
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Views.FieldView">
+            <summary>
+            FieldView control provides field controller WinForms view implementation
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.FieldView.Lookup">
+            <summary>
+            Invokes an appropriate lookup which can be a drop down box, popup form or other custom lookup method
+             as defined by an attached field controller
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.FieldView.TakeValue">
+            <summary>
+            Takes controls value from attached controller 
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.FieldView.CommitValue">
+            <summary>
+            Commits controls value into attached controller 
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.FieldView.HideErrorBalloon">
+            <summary>
+            Hides error balloon if it is shown
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.FieldView.GetControlHeight">
+            <summary>
+            Returns height of the control taking into consideration font sizes and margins
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.FieldView.GetDataEntryElementHeight">
+            <summary>
+            Returns height of data entry element
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.FieldView.LayoutElements">
+            <summary>
+            Perfoms layout of all elements a control(host) consists of
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldView.ControlType">
+            <summary>
+            Determines data-entry control type. When property is set to "Auto", FieldView will automatically determine
+             the most appropriate control type based on information supplied by attached controller
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldView.ActualControlType">
+            <summary>
+            Actual data-entry control type. Property value is infered from field when "ControlType"  is "Auto"
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldView.CaptionPlacement">
+            <summary>
+            Determines where caption label is placed relative to entry control
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldView.CaptionAlignment">
+            <summary>
+            Determines how caption label text is aligned
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldView.TextHAlignment">
+            <summary>
+            Determines how text is aligned in text and combo box controls
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldView.LineCount">
+            <summary>
+            Determines how many rows of text should be occupied by entry control
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldView.CaptionVisible">
+            <summary>
+            Indicates whether caption is visible
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldView.ElementHSpacing">
+            <summary>
+            Horizontal spacing between elements
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldView.ElementVSpacing">
+            <summary>
+            Vertical spacing between elements
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldView.CaptionHIndent">
+            <summary>
+            Horizontal caption indent - a space between control edge and data-entry element reserved for caption
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldView.DisplayFormat">
+            <summary>
+            Provides display format string. This property when set overrides display format of attached field controller
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldView.ComboButtonVisible">
+            <summary>
+            Indicates whether combo button is visible
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.FieldView.Multiline">
+            <summary>
+            Indicates whether control is able to display multiple lines of text
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Views.InternalTextBox">
+            <summary>
+            Internal framework helper textbox used by a FieldView control. Not intended to be used by developers
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.InternalTextBox.InvalidateControlImage">
+            <summary>
+            Deletes buffered image, thus demanding repaint of buffer
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.InternalTextBox.ControlImage">
+            <summary>
+            Returns an image of the TextBox control. Image is a transparent bitmap
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Views.RecordContextForm">
+            <summary>
+            Provides record-bindable form functionality 
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.RecordContextForm.AttachController(NFX.RecordModel.Record)">
+            <summary>
+            Attaches form to record controller  
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.RecordContextForm.DetachController">
+            <summary>
+            Detaches form from controller. Does nothing if not attached
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.RecordContextForm.ControllerBinding">
+            <summary>
+            Provides access to internal controller binding. Binding implementations depend on concrete view control 
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.RecordContextForm.ControllerAttached">
+            <summary>
+            Indicates whether control is attached to a controller
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.RecordContextForm.Record">
+            <summary>
+            Represents a record this form control is attached to
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.RecordContextForm.AttachToRecordSurrogateTypeName">
+            <summary>
+            A fully-qualified type name including declaring assembly name, i.e.:
+             "Namespace1.Type1, TestClassesAssembly"
+            This property is used only in design time 
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Views.RecordContextPanel">
+            <summary>
+            Provides record-bindable panel functionality
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.RecordContextPanel.TryAttachModel">
+            <summary>
+            Tries to attach control to model referenced by AttachToRecord property 
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.RecordContextPanel.AttachModel">
+            <summary>
+            Attaches control to model referenced by AttachToRecord property 
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.RecordContextPanel.AttachModel(NFX.RecordModel.Record)">
+            <summary>
+            Attaches control to a particular record model 
+            </summary>
+        </member>
+        <member name="M:NFX.WinForms.Views.RecordContextPanel.DetachModel">
+            <summary>
+            Detaches model. Does nothing if not attached
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.RecordContextPanel.ControllerBinding">
+            <summary>
+            Provides access to internal controller binding. Binding implementations depend on concrete view control 
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.RecordContextPanel.ControllerAttached">
+            <summary>
+            Indicates whether control is attached to a controller
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.RecordContextPanel.AttachToRecord">
+            <summary>
+            Specifies a record this control will be connected with
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.RecordContextPanel.AttachToRecordSurrogateTypeName">
+            <summary>
+            A fully-qualified type name including declaring assembly name, i.e.:
+             "Namespace1.Type1, TestClassesAssembly"
+            This property is used only in design time 
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.RecordContextPanel.Record">
+            <summary>
+            Controller field this control is connected to. May be null
+            </summary>
+        </member>
+        <member name="P:NFX.WinForms.Views.RecordContextPanel.AttachToParentRecord">
+            <summary>
+            Determines whether panel is attached to its parent record
+            </summary>
+        </member>
+        <member name="T:NFX.WinForms.Views.GeneratedRecordView">
+            <summary>
+            Defines a panel that auto populates with RecordModel's field views
+            </summary>
+        </member>
+        <member name="T:NFX.WinApi.GDIApi">
+            <summary>
+            Provides managed wrappers to Windows Gdi.dll
+            </summary>
+        </member>
+        <member name="T:NFX.WinApi.KernelApi">
+            <summary>
+            Provides managed wrappers to Windows Kernel.dll
+            </summary>
+        </member>
+        <member name="T:NFX.WinApi.UserApi">
+            <summary>
+            Provides managed wrappers to Windows User.dll
+            </summary>
+        </member>
+    </members>
+</doc>

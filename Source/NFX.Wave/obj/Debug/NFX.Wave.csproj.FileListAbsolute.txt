@@ -1,0 +1,7 @@
+C:\Projects_CSharp\MQT\nfx\Output\Debug\LICENSE.txt
+C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.Wave.XML
+C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.Wave.dll
+C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.Wave.pdb
+C:\Projects_CSharp\MQT\nfx\Source\NFX.Wave\obj\Debug\NFX.Wave.csprojResolveAssemblyReference.cache
+C:\Projects_CSharp\MQT\nfx\Source\NFX.Wave\obj\Debug\NFX.Wave.dll
+C:\Projects_CSharp\MQT\nfx\Source\NFX.Wave\obj\Debug\NFX.Wave.pdb

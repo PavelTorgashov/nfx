@@ -1,0 +1,7 @@
+C:\Projects_CSharp\MQT\nfx\Output\Debug\LICENSE.txt
+C:\Projects_CSharp\MQT\nfx\Output\Debug\ntc.exe.config
+C:\Projects_CSharp\MQT\nfx\Output\Debug\ntc.exe
+C:\Projects_CSharp\MQT\nfx\Output\Debug\ntc.pdb
+C:\Projects_CSharp\MQT\nfx\Source\Tools\ntc\obj\Debug\ntc.csprojResolveAssemblyReference.cache
+C:\Projects_CSharp\MQT\nfx\Source\Tools\ntc\obj\Debug\ntc.exe
+C:\Projects_CSharp\MQT\nfx\Source\Tools\ntc\obj\Debug\ntc.pdb

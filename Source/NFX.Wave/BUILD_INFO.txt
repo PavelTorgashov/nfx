@@ -1,0 +1,6 @@
+BuildSeed=21516515
+Computer=SAMSON
+User=Pasha
+OS=Win32NT
+OSVer=Microsoft Windows NT 6.1.7601 Service Pack 1
+UTCTime=2016-01-27T22:21:30.963Z

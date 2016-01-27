@@ -1,0 +1,7 @@
+C:\Projects_CSharp\MQT\nfx\Output\Debug\LICENSE.txt
+C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.Web.XML
+C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.Web.dll
+C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.Web.pdb
+C:\Projects_CSharp\MQT\nfx\Source\NFX.Web\obj\Debug\NFX.Web.csprojResolveAssemblyReference.cache
+C:\Projects_CSharp\MQT\nfx\Source\NFX.Web\obj\Debug\NFX.Web.dll
+C:\Projects_CSharp\MQT\nfx\Source\NFX.Web\obj\Debug\NFX.Web.pdb

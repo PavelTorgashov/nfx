@@ -1,0 +1,7 @@
+C:\Projects_CSharp\MQT\nfx\Output\Debug\LICENSE.txt
+C:\Projects_CSharp\MQT\nfx\Output\Debug\phash.exe.config
+C:\Projects_CSharp\MQT\nfx\Output\Debug\phash.exe
+C:\Projects_CSharp\MQT\nfx\Output\Debug\phash.pdb
+C:\Projects_CSharp\MQT\nfx\Source\Tools\phash\obj\Debug\phash.csprojResolveAssemblyReference.cache
+C:\Projects_CSharp\MQT\nfx\Source\Tools\phash\obj\Debug\phash.exe
+C:\Projects_CSharp\MQT\nfx\Source\Tools\phash\obj\Debug\phash.pdb

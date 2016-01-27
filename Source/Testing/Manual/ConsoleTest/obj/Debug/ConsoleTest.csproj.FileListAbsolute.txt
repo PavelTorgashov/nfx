@@ -1,0 +1,9 @@
+C:\Projects_CSharp\MQT\nfx\Output\Debug\LICENSE.txt
+C:\Projects_CSharp\MQT\nfx\Output\Debug\ConsoleTest.exe.configuration
+C:\Projects_CSharp\MQT\nfx\Output\Debug\glue-server-test.configuration
+C:\Projects_CSharp\MQT\nfx\Output\Debug\ConsoleTest.exe.config
+C:\Projects_CSharp\MQT\nfx\Output\Debug\ConsoleTest.exe
+C:\Projects_CSharp\MQT\nfx\Output\Debug\ConsoleTest.pdb
+C:\Projects_CSharp\MQT\nfx\Source\Testing\Manual\ConsoleTest\obj\Debug\ConsoleTest.csprojResolveAssemblyReference.cache
+C:\Projects_CSharp\MQT\nfx\Source\Testing\Manual\ConsoleTest\obj\Debug\ConsoleTest.exe
+C:\Projects_CSharp\MQT\nfx\Source\Testing\Manual\ConsoleTest\obj\Debug\ConsoleTest.pdb

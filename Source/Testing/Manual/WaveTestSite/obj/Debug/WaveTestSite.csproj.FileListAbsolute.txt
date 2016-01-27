@@ -1,0 +1,8 @@
+C:\Projects_CSharp\MQT\nfx\Output\Debug\LICENSE.txt
+C:\Projects_CSharp\MQT\nfx\Output\Debug\WaveTestSite.laconf
+C:\Projects_CSharp\MQT\nfx\Output\Debug\WaveTestSite.exe.config
+C:\Projects_CSharp\MQT\nfx\Output\Debug\WaveTestSite.exe
+C:\Projects_CSharp\MQT\nfx\Output\Debug\WaveTestSite.pdb
+C:\Projects_CSharp\MQT\nfx\Source\Testing\Manual\WaveTestSite\obj\Debug\WaveTestSite.csprojResolveAssemblyReference.cache
+C:\Projects_CSharp\MQT\nfx\Source\Testing\Manual\WaveTestSite\obj\Debug\WaveTestSite.exe
+C:\Projects_CSharp\MQT\nfx\Source\Testing\Manual\WaveTestSite\obj\Debug\WaveTestSite.pdb

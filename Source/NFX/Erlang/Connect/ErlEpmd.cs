@@ -75,13 +75,13 @@ namespace NFX.Erlang
     public static int LookupPort(ErlLocalNode home, ErlRemoteNode node,
         bool closeSocket = false)
     {
-      TcpClient s = null;
+      IErlTransport s = null;
 
       try
       {
         var obuf = new ErlOutputStream(
             writeVersion: false, capacity: 4 + 3 + node.AliveName.Length + 1);
-        s = node.Epmd ?? new TcpClient(node.Host, EPMD_PORT);
+        s = node.Epmd ?? new ErlTransportFactory().Create(node.Host, EPMD_PORT);
 
         // build and send epmd request
         // length[2], tag[1], alivename[n] (length = n+1)
@@ -169,13 +169,13 @@ namespace NFX.Erlang
     public static bool PublishPort(ErlLocalNode node)
     {
       Exception error = null;
-      TcpClient s = null;
+      IErlTransport s = null;
 
       try
       {
         ErlOutputStream obuf = new ErlOutputStream(
             writeVersion: false, capacity: node.AliveName.Length + 20);
-        s = node.Epmd ?? new TcpClient(ErlLocalNode.LocalHost, EPMD_PORT);
+        s = node.Epmd ?? new ErlTransportFactory().Create(ErlLocalNode.LocalHost, EPMD_PORT);
 
         obuf.Write2BE(node.AliveName.Length + 13);
 
@@ -255,11 +255,11 @@ namespace NFX.Erlang
     /// </summary>
     public static void UnPublishPort(ErlLocalNode node)
     {
-      TcpClient s = null;
+      IErlTransport s = null;
 
       try
       {
-        s = node.Epmd ?? new TcpClient(ErlLocalNode.LocalHost, EPMD_PORT);
+        s = node.Epmd ?? new ErlTransportFactory().Create(ErlLocalNode.LocalHost, EPMD_PORT);
         ErlOutputStream obuf = new ErlOutputStream(
             writeVersion: false, capacity: node.AliveName.Length + 8);
         obuf.Write2BE(node.AliveName.Length + 1);
