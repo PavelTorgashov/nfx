@@ -33,37 +33,60 @@ namespace NFX.Erlang
     /// </summary>
     public class ErlSshTransport : IErlTransport, ISSHConnectionEventReceiver, ISSHChannelEventReceiver
     {
-        SSHConnection _conn;
-        bool _ready;
+        Socket client;
+        SSHConnection conn;
         SSHChannel channel;
         SshTunnelStream stream;
-        Socket client;
         IPEndPoint remoteTarget;
+        bool ready;
 
         const int DEFAULT_SSH_PORT = 22;
 
+        /// <summary>
+        /// Port of SSH server (by default: 22)
+        /// </summary>
         public int SSHServerPort { get; set; }
-        public string SSHServerHost { get; set; }//leave empty if ssh server same as target host
+        /// <summary>
+        /// Host of SSH server (by default: same as target host)
+        /// </summary>
+        public string SSHServerHost { get; set; }
+        /// <summary>
+        /// SSH user name
+        /// </summary>
         public string SSHUserName { get; set; }
+        /// <summary>
+        /// SSH user password
+        /// </summary>
         public string SSHUserPassword { get; set; }
+        /// <summary>
+        /// Identity key file path (only for AuthenticationType = PublicKey)
+        /// </summary>
         public string SSHKeyFilePath { get; set; }
+        /// <summary>
+        /// Type of auth on SSH server
+        /// </summary>
         public AuthenticationType AuthenticationType { get; set; }
 
         public ErlSshTransport()
         {
+            //default settings
             AuthenticationType = AuthenticationType.Password;
             SSHServerPort = DEFAULT_SSH_PORT;
             //create socket
             client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
 
+        /// <summary>
+        /// Connect to remote host:port over SSH tunnel
+        /// </summary>
         public void Connect(string host, int port)
         {
-            Console.WriteLine("Ssh tunnel: {0}:{1}", host, port);
+            Console.WriteLine("Ssh tunnel: {0}:{1}", host, port);//temp !!!!!
 
             //remember remote target
             remoteTarget = new IPEndPoint(ResolveHost(host), port);
-            //connect (SSH server host same as target host)
+
+            //connect to SSH server
             var sshHost = string.IsNullOrEmpty(SSHServerHost) ? host : SSHServerHost;
             client.Connect(new IPEndPoint(ResolveHost(sshHost), SSHServerPort));
 
@@ -78,20 +101,21 @@ namespace NFX.Erlang
                 param.IdentityFile = SSHKeyFilePath;
 
             //former algorithm is given priority in the algorithm negotiation
-            param.PreferableHostKeyAlgorithms = new PublicKeyAlgorithm[] { PublicKeyAlgorithm.DSA };
-            param.PreferableCipherAlgorithms = new CipherAlgorithm[] { CipherAlgorithm.Blowfish, CipherAlgorithm.TripleDES };
+            param.PreferableHostKeyAlgorithms = new PublicKeyAlgorithm[] { PublicKeyAlgorithm.DSA, PublicKeyAlgorithm.RSA };
+            param.PreferableCipherAlgorithms = new CipherAlgorithm[] { CipherAlgorithm.Blowfish, CipherAlgorithm.TripleDES, CipherAlgorithm.AES192CTR };
 
             param.WindowSize = 0x1000; //this option is ignored with SSH1
 
             //Creating a new SSH connection over the underlying socket
-            _conn = SSHConnection.Connect(param, this, client);
-            _conn.AutoDisconnect = true;
+            conn = SSHConnection.Connect(param, this, client);
+            conn.AutoDisconnect = true;
 
-            //Local->Remote port forwarding
-            channel = _conn.ForwardPort(this, host, port, "localhost", 0);
-            while (!_ready)
+            //Local->Remote port forwarding (we use localhost:0 as local port, because local port is not required for us, we will use this tunnel directly)
+            channel = conn.ForwardPort(this, host, port, "localhost", 0);
+            while (!ready)
                 System.Threading.Thread.Sleep(50); //wait response
 
+            //create network stream
             stream = new SshTunnelStream(channel);
 
             //Remote->Local
@@ -221,7 +245,7 @@ namespace NFX.Erlang
             channel.Close();
             Debug.Write("Channel EOF" + "\r\n");
             //close connection
-            _conn.Close();
+            conn.Close();
         }
 
         public void OnExtendedData(int type, byte[] data)
@@ -241,7 +265,7 @@ namespace NFX.Erlang
 
         public void OnChannelReady()
         {
-            _ready = true;
+            ready = true;
         }
 
         public void OnChannelError(Exception error)

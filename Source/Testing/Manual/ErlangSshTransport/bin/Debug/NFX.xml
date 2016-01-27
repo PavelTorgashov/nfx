@@ -3871,6 +3871,41 @@
             NoDelay socket
             </summary>
         </member>
+        <member name="M:NFX.Erlang.ErlSshTransport.Connect(System.String,System.Int32)">
+            <summary>
+            Connect to remote host:port over SSH tunnel
+            </summary>
+        </member>
+        <member name="P:NFX.Erlang.ErlSshTransport.SSHServerPort">
+            <summary>
+            Port of SSH server (by default: 22)
+            </summary>
+        </member>
+        <member name="P:NFX.Erlang.ErlSshTransport.SSHServerHost">
+            <summary>
+            Host of SSH server (by default: same as target host)
+            </summary>
+        </member>
+        <member name="P:NFX.Erlang.ErlSshTransport.SSHUserName">
+            <summary>
+            SSH user name
+            </summary>
+        </member>
+        <member name="P:NFX.Erlang.ErlSshTransport.SSHUserPassword">
+            <summary>
+            SSH user password
+            </summary>
+        </member>
+        <member name="P:NFX.Erlang.ErlSshTransport.SSHKeyFilePath">
+            <summary>
+            Identity key file path (only for AuthenticationType = PublicKey)
+            </summary>
+        </member>
+        <member name="P:NFX.Erlang.ErlSshTransport.AuthenticationType">
+            <summary>
+            Type of auth on SSH server
+            </summary>
+        </member>
         <member name="T:NFX.Erlang.ErlTcpTransport">
             <summary>
             TCP transport.
@@ -3890,7 +3925,7 @@
             <summary>
             Receives data from tunnel.
             If connection is closed and no data in buffer - returns 0.
-            If tunnel is not closed - blocks thread while data is not received.
+            If tunnel is not closed and no data in buffer - blocks thread while data will be received.
             </summary>
         </member>
         <member name="M:NFX.Erlang.SshTunnelStream.Write(System.Byte[],System.Int32,System.Int32)">

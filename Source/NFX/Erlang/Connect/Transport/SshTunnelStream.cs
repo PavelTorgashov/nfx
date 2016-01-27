@@ -42,25 +42,30 @@ namespace NFX.Erlang
         /// <summary>
         /// Receives data from tunnel.
         /// If connection is closed and no data in buffer - returns 0.
-        /// If tunnel is not closed - blocks thread while data is not received.
+        /// If tunnel is not closed and no data in buffer - blocks thread while data will be received.
         /// </summary>
         public override int Read(byte[] buffer, int offset, int count)
         {
             var hasData = false;
 
+            //check data available
             lock (IncomingData)
                 hasData = IncomingData.Count > 0;
 
+            //if channel is closed and no data in buffer, return 0
             if (!channel.Connection.IsOpen && !hasData)
                 return 0;
 
+            //wait while data will be available
             while (!hasData)
             {
                 Thread.Sleep(50);
+                //check data available
                 lock (IncomingData)
                     hasData = IncomingData.Count > 0;
             }
 
+            //copy data from incoming queue to output buffer
             lock (IncomingData)
             {
                 var c = Math.Min(count, IncomingData.Count);
