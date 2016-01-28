@@ -22,10 +22,12 @@ namespace NFX.Erlang
     /// </summary>
     public class ErlTransportFactory
     {
+        #region Public
+
         public IErlTransport Create()
         {
             //return new ErlTcpTransport();
-            return new ErlSshTransport() { SSHUserName = "Guest", SSHUserPassword = "guest123", SSHServerHost = "127.0.0.1" };//temp!!!!
+            return new ErlSshTransport() { SSHUserName = "Pasha", SSHUserPassword = "123456", SSHPrivateKeyFilePath = "c:\\key.bin", AuthenticationType = Granados.AuthenticationType.PublicKey };//temp!!!!
         }
 
         public IErlTransport Create(string host, int port)
@@ -35,5 +37,7 @@ namespace NFX.Erlang
 
             return res;
         }
+
+        #endregion
     }
 }

@@ -17,7 +17,6 @@ using System.Globalization;
 
 using Granados.Crypto;
 using Granados.IO;
-using Granados.SSH1;
 using Granados.SSH2;
 using Granados.Util;
 using Granados.PKI;

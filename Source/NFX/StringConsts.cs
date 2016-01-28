@@ -915,6 +915,7 @@ namespace NFX
     public const string ERL_VARIABLE_NOT_FOUND_ERROR          = "Variable {0} not found!";
     public const string ERL_VARIABLE_INVALID_VALUE_TYPE_ERROR = "Invalid variable {0} value type (got={1}, expected={2})";
     public const string ERL_WRONG_VALUE_FOR_ARGUMENT_ERROR    = "Wrong value type for argument #{0}: {1}";
+    public const string ERL_CREATE_SSH_TUNNEL_ERROR           = "Can not create SSH tunnel";
 
     public const string CACHE_VALUE_FACTORY_ERROR = "Cache value factory func threw error from {0}. Exception: {1}";
     public const string CACHE_RECORD_ITEM_DISPOSE_ERROR = "Cache value threw error while trying to be disposed from {0}. Exception: {1}";

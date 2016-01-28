@@ -63,5 +63,9 @@ namespace NFX.Erlang
         /// NoDelay socket
         /// </summary>
         bool NoDelay { get; set; }
+        /// <summary>
+        /// Trace event
+        /// </summary>
+        event TraceEventHandler Trace;
     }
 }

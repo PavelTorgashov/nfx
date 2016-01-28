@@ -109,11 +109,12 @@ namespace Granados.SSH2 {
          *  encrypted-body = array of BigInteger(algorithm-specific)
          */
 #if !PODEROSA_KEYFORMAT
-        public static SSH2UserAuthKey FromSECSHStyleStream(Stream strm, string passphrase) {
+        public static SSH2UserAuthKey FromSECSHStyleStream(Stream strm, string passphrase)
+        {
             StreamReader r = new StreamReader(strm, Encoding.ASCII);
             string l = r.ReadLine();
             if (l == null || l != "---- BEGIN SSH2 ENCRYPTED PRIVATE KEY ----")
-                throw new SSHException("Wrong key format");
+                throw new SSHException("Wrong key format (expected SSH2 ENCRYPTED PRIVATE KEY)");
 
             string comment = "";
             l = r.ReadLine();

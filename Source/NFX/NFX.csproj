@@ -129,7 +129,6 @@
     <Compile Include="Erlang\Connect\SSH\ConnectionInfo.cs" />
     <Compile Include="Erlang\Connect\SSH\ConnectionParameter.cs" />
     <Compile Include="Erlang\Connect\SSH\ConnectionRoot.cs" />
-    <Compile Include="Erlang\Connect\SSH\CRC.cs" />
     <Compile Include="Erlang\Connect\SSH\DataFragment.cs" />
     <Compile Include="Erlang\Connect\SSH\DES.cs" />
     <Compile Include="Erlang\Connect\SSH\DSA.cs" />
@@ -142,10 +141,6 @@
     <Compile Include="Erlang\Connect\SSH\RSA.cs" />
     <Compile Include="Erlang\Connect\SSH\SCP.cs" />
     <Compile Include="Erlang\Connect\SSH\Socket.cs" />
-    <Compile Include="Erlang\Connect\SSH\SSH1Connection.cs" />
-    <Compile Include="Erlang\Connect\SSH\SSH1Packet.cs" />
-    <Compile Include="Erlang\Connect\SSH\SSH1UserAuthKey.cs" />
-    <Compile Include="Erlang\Connect\SSH\SSH1Util.cs" />
     <Compile Include="Erlang\Connect\SSH\SSH2Connection.cs" />
     <Compile Include="Erlang\Connect\SSH\SSH2Packet.cs" />
     <Compile Include="Erlang\Connect\SSH\SSH2UserAuthKey.cs" />
@@ -725,7 +720,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Erlang\Connect\SSH\strings.resx" />
-    <EmbeddedResource Include="Erlang\Connect\SSH\strings_ja.resx" />
     <EmbeddedResource Include="Parsing\JackLondon.txt" />
   </ItemGroup>
   <ItemGroup>

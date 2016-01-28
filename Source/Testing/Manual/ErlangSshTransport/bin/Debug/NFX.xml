@@ -2995,16 +2995,6 @@
             returns the block size from Algorithm in bytes
             </summary>
         </member>
-        <member name="T:Granados.Crypto.SSH1.BlowfishCipher1">
-            <summary>
-            Blowfish for SSH1
-            </summary>
-        </member>
-        <member name="T:Granados.Crypto.SSH1.TripleDESCipher1">
-            <summary>
-            TripleDES for SSH1
-            </summary>
-        </member>
         <member name="T:Granados.Crypto.SSH2.BlowfishCipher2">
             <summary>
             Blowfish for SSH2
@@ -3215,12 +3205,6 @@
             </summary>
             <exclude/>
         </member>
-        <member name="T:Granados.SSH1.SSH1ConnectionInfo">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
         <member name="T:Granados.SSH2.SSH2ConnectionInfo">
             <summary>
             
@@ -3305,12 +3289,6 @@
         </member>
         <member name="M:Granados.SSHChannel.Close">
             closes this channel
-        </member>
-        <member name="T:Granados.SSH1.CRC">
-            <summary>
-            
-            </summary>
-            <exclude/>
         </member>
         <member name="T:Granados.IO.DataFragment">
             <summary>
@@ -3562,71 +3540,6 @@
             </summary>
             <exclude/>
         </member>
-        <member name="T:Granados.SSH1.SSH1Connection">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.SSH1.SSH1Channel">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="M:Granados.SSH1.SSH1Channel.ResizeTerminal(System.Int32,System.Int32,System.Int32,System.Int32)">
-            resizes the size of terminal
-        </member>
-        <member name="M:Granados.SSH1.SSH1Channel.Transmit(System.Byte[])">
-            transmits channel data 
-        </member>
-        <member name="M:Granados.SSH1.SSH1Channel.Transmit(System.Byte[],System.Int32,System.Int32)">
-            transmits channel data 
-        </member>
-        <member name="M:Granados.SSH1.SSH1Channel.Close">
-            closes this channel
-        </member>
-        <member name="M:Granados.SSH1.SSH1Packet.FromPlainPayload(Granados.SSH1.PacketType,System.Byte[])">
-            constructs from the packet type and the body
-        </member>
-        <member name="M:Granados.SSH1.SSH1Packet.AsStdinString(System.Byte[])">
-            creates a packet as the input of shell
-        </member>
-        <member name="M:Granados.SSH1.SSH1Packet.WriteTo(Granados.IO.AbstractGranadosSocket)">
-            writes to plain stream
-        </member>
-        <member name="M:Granados.SSH1.SSH1Packet.WriteTo(Granados.IO.AbstractGranadosSocket,Granados.Crypto.Cipher)">
-            writes to encrypted stream
-        </member>
-        <member name="M:Granados.SSH1.SSH1PacketBuilder.ConstructAndCheck(System.Byte[],System.Int32,System.Int32,System.Boolean)">
-            reads type, data, and crc from byte array.
-            an exception is thrown if crc check fails.
-        </member>
-        <member name="T:Granados.SSH1.SSH1UserAuthKey">
-            <summary>
-            private key for user authentication
-            </summary>
-            <exclude/>
-        </member>
-        <member name="M:Granados.SSH1.SSH1UserAuthKey.#ctor(System.String,System.String)">
-            <summary>
-            constructs from file
-            </summary>
-            <param name="path">file name</param>
-            <param name="passphrase">passphrase or empty string if passphrase is not required</param>
-        </member>
-        <member name="T:Granados.SSH1.SSHServerInfo">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.SSH1.PacketType">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
         <member name="T:Granados.SSH2.SSH2Connection">
             <summary>
             
@@ -3820,6 +3733,11 @@
             StringResource の概要の説明です。
             </summary>
         </member>
+        <member name="T:Granados.Util.GlobalResources">
+            <summary>
+            Returns resource from entry assembly
+            </summary>
+        </member>
         <member name="T:NFX.Erlang.ErlSshTransport">
             <summary>
             SSH tunnel transport.
@@ -3871,19 +3789,24 @@
             NoDelay socket
             </summary>
         </member>
+        <member name="E:NFX.Erlang.IErlTransport.Trace">
+            <summary>
+            Trace event
+            </summary>
+        </member>
         <member name="M:NFX.Erlang.ErlSshTransport.Connect(System.String,System.Int32)">
             <summary>
             Connect to remote host:port over SSH tunnel
             </summary>
         </member>
+        <member name="E:NFX.Erlang.ErlSshTransport.Trace">
+            <summary>
+            Transmits trace messages
+            </summary>
+        </member>
         <member name="P:NFX.Erlang.ErlSshTransport.SSHServerPort">
             <summary>
             Port of SSH server (by default: 22)
-            </summary>
-        </member>
-        <member name="P:NFX.Erlang.ErlSshTransport.SSHServerHost">
-            <summary>
-            Host of SSH server (by default: same as target host)
             </summary>
         </member>
         <member name="P:NFX.Erlang.ErlSshTransport.SSHUserName">
@@ -3893,12 +3816,18 @@
         </member>
         <member name="P:NFX.Erlang.ErlSshTransport.SSHUserPassword">
             <summary>
-            SSH user password
+            SSH user password (or private key file passphrase)
             </summary>
         </member>
-        <member name="P:NFX.Erlang.ErlSshTransport.SSHKeyFilePath">
+        <member name="P:NFX.Erlang.ErlSshTransport.SSHPrivateKeyFilePath">
             <summary>
-            Identity key file path (only for AuthenticationType = PublicKey)
+            Private key file path (only for AuthenticationType = PublicKey)
+            Required SSH2 ENCRYPTED PRIVATE KEY format.
+            </summary>
+        </member>
+        <member name="P:NFX.Erlang.ErlSshTransport.SSHTunnelCreationTimeout">
+            <summary>
+            Timeout of creation of SSH tunnel, ms (by default: 20000 ms)
             </summary>
         </member>
         <member name="P:NFX.Erlang.ErlSshTransport.AuthenticationType">
@@ -3909,6 +3838,11 @@
         <member name="T:NFX.Erlang.ErlTcpTransport">
             <summary>
             TCP transport.
+            </summary>
+        </member>
+        <member name="E:NFX.Erlang.ErlTcpTransport.Trace">
+            <summary>
+            Transmits trace messages
             </summary>
         </member>
         <member name="T:NFX.Erlang.ErlTransportFactory">

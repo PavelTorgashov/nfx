@@ -205,49 +205,6 @@ namespace Granados.IO {
     }
 }
 
-namespace Granados.IO.SSH1 {
-    using Granados.SSH1;
-
-    internal class SSH1DataReader : SSHDataReader {
-
-        public SSH1DataReader(byte[] image)
-            : base(image) {
-        }
-        public SSH1DataReader(DataFragment data)
-            : base(data) {
-        }
-
-        public PacketType ReadPacketType() {
-            return (PacketType)this.ReadByte();
-        }
-
-        public override BigInteger ReadMPInt() {
-            //first 2 bytes describes the bit count
-            int bits = (((int)_data[_offset]) << 8) + _data[_offset + 1];
-            _offset += 2;
-
-            return new BigInteger(Read((bits + 7) / 8));
-        }
-    }
-
-    internal class SSH1DataWriter : SSHDataWriter {
-        public override void WriteBigInteger(BigInteger data) {
-            byte[] image = data.getBytes();
-            int off = (image[0] == 0 ? 1 : 0);
-            int len = (image.Length - off) * 8;
-
-            int a = len & 0x0000FF00;
-            a >>= 8;
-            _strm.WriteByte((byte)a);
-
-            a = len & 0x000000FF;
-            _strm.WriteByte((byte)a);
-
-            _strm.Write(image, off, image.Length - off);
-        }
-    }
-}
-
 namespace Granados.IO.SSH2 {
     using Granados.SSH2;
 

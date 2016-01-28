@@ -13,6 +13,9 @@ using System.Globalization;
 using System.Resources;
 using System.Diagnostics;
 using System.Reflection;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Granados.Util {
 
@@ -22,23 +25,66 @@ namespace Granados.Util {
     internal class StringResources {
         private string _resourceName;
         private ResourceManager _resMan;
+        Assembly asm;
 
-        public StringResources(string name, Assembly asm) {
+        public StringResources(string name, Assembly asm)
+        {
             _resourceName = name;
-            LoadResourceManager(name, asm);
+            this.asm = asm;
         }
 
-        public string GetString(string id) {
-            return _resMan.GetString(id); //もしこれが遅いようならこのクラスでキャッシュでもつくればいいだろう
+        public string GetString(string id) 
+        {
+            return GlobalResources.GetString(id, asm);
+        }
+    }
+
+    /// <summary>
+    /// Returns resource from entry assembly
+    /// </summary>
+    public static class GlobalResources
+    {
+        public static string GetString(string sourceName)
+        {
+            return GetResources().Select(res => res.GetString(sourceName)).FirstOrDefault(result => result != null);
         }
 
-        private void LoadResourceManager(string name, Assembly asm) {
-            //当面は英語・日本語しかしない
-            CultureInfo ci = System.Threading.Thread.CurrentThread.CurrentUICulture;
-            if (ci.Name.StartsWith("ja"))
-                _resMan = new ResourceManager(name + "_ja", asm);
-            else
-                _resMan = new ResourceManager(name, asm);
+        public static Stream GetStream(string sourceName)
+        {
+            return GetResources().Select(res => res.GetStream(sourceName)).FirstOrDefault(result => result != null);
+        }
+
+        public static object GetObject(string sourceName)
+        {
+            return GetResources().Select(res => res.GetObject(sourceName)).FirstOrDefault(result => result != null);
+        }
+
+        static IEnumerable<System.Resources.ResourceManager> GetResources()
+        {
+            var ass = Assembly.GetEntryAssembly();
+            foreach (var resourceName in ass.GetManifestResourceNames())
+                yield return new System.Resources.ResourceManager(resourceName.Split(new string[] { ".resource" }, StringSplitOptions.None)[0], ass);
+        }
+
+        public static string GetString(string sourceName, Assembly ass)
+        {
+            return GetResources(ass).Select(res => res.GetString(sourceName)).FirstOrDefault(result => result != null);
+        }
+
+        public static Stream GetStream(string sourceName, Assembly ass)
+        {
+            return GetResources().Select(res => res.GetStream(sourceName)).FirstOrDefault(result => result != null);
+        }
+
+        public static object GetObject(string sourceName, Assembly ass)
+        {
+            return GetResources().Select(res => res.GetObject(sourceName)).FirstOrDefault(result => result != null);
+        }
+
+        static IEnumerable<System.Resources.ResourceManager> GetResources(Assembly ass)
+        {
+            foreach (var resourceName in ass.GetManifestResourceNames())
+                yield return new System.Resources.ResourceManager(resourceName.Split(new string[] { ".resource" }, StringSplitOptions.None)[0], ass);
         }
     }
 }

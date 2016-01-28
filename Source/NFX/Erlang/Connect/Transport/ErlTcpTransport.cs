@@ -29,32 +29,51 @@ namespace NFX.Erlang
     /// </summary>
     public class ErlTcpTransport : IErlTransport
     {
-        protected TcpClient client;
+        #region Fields
+
+        protected TcpClient             m_Client;
+
+        #endregion
+
+        #region Events
+
+        /// <summary>
+        /// Transmits trace messages
+        /// </summary>
+        public event TraceEventHandler Trace = delegate { };
+
+        #endregion
+
+        #region .ctor
 
         public ErlTcpTransport()
         {
-            client = new TcpClient();
+            m_Client = new TcpClient();
         }
 
         public ErlTcpTransport(TcpClient client)
         {
-            this.client = client;
+            this.m_Client = client;
         }
 
         public ErlTcpTransport(string host, int port)
         {
-            client = new TcpClient(host, port);
+            m_Client = new TcpClient(host, port);
         }
+
+        #endregion
+
+        #region Public
 
         public int ReceiveBufferSize
         {
             get
             {
-                return client.ReceiveBufferSize;
+                return m_Client.ReceiveBufferSize;
             }
             set
             {
-                client.ReceiveBufferSize = value;
+                m_Client.ReceiveBufferSize = value;
             }
         }
 
@@ -62,11 +81,11 @@ namespace NFX.Erlang
         {
             get
             {
-                return client.SendBufferSize;
+                return m_Client.SendBufferSize;
             }
             set
             {
-                client.SendBufferSize = value;
+                m_Client.SendBufferSize = value;
             }
         }
 
@@ -74,42 +93,44 @@ namespace NFX.Erlang
         {
             get
             {
-                return client.NoDelay;
+                return m_Client.NoDelay;
             }
             set
             {
-                client.NoDelay = value;
+                m_Client.NoDelay = value;
             }
         }
 
         public Stream GetStream()
         {
-            return client.GetStream();
+            return m_Client.GetStream();
         }
 
         public virtual void Connect(string host, int port)
         {
-            client.Connect(host, port);
+            m_Client.Connect(host, port);
         }
 
         public void Close()
         {
-            client.Close();
+            m_Client.Close();
         }
 
         public void Dispose()
         {
-            client.Client.Dispose();
+            m_Client.Client.Dispose();
         }
 
         public void SetSocketOption(SocketOptionLevel optionLevel, SocketOptionName optionName, bool optionValue)
         {
-            client.Client.SetSocketOption(optionLevel, optionName, optionValue);
+            m_Client.Client.SetSocketOption(optionLevel, optionName, optionValue);
         }
 
         public EndPoint RemoteEndPoint
         {
-            get { return client.Client.RemoteEndPoint; }
+            get { return m_Client.Client.RemoteEndPoint; }
         }
+
+        #endregion
     }
 }

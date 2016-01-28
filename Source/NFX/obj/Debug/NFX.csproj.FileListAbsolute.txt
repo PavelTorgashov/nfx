@@ -5,6 +5,5 @@ C:\Projects_CSharp\MQT\nfx\Output\Debug\NFX.pdb
 C:\Projects_CSharp\MQT\nfx\Source\NFX\obj\Debug\NFX.dll
 C:\Projects_CSharp\MQT\nfx\Source\NFX\obj\Debug\NFX.pdb
 C:\Projects_CSharp\MQT\nfx\Source\NFX\obj\Debug\NFX.Erlang.Connect.SSH.strings.resources
-C:\Projects_CSharp\MQT\nfx\Source\NFX\obj\Debug\NFX.Erlang.Connect.SSH.strings_ja.resources
 C:\Projects_CSharp\MQT\nfx\Source\NFX\obj\Debug\NFX.csproj.GenerateResource.Cache
 C:\Projects_CSharp\MQT\nfx\Source\NFX\obj\Debug\NFX.csprojResolveAssemblyReference.cache

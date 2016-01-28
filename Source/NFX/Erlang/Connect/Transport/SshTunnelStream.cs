@@ -31,13 +31,23 @@ namespace NFX.Erlang
     /// </summary>
     public class SshTunnelStream : Stream
     {
-        SSHChannel channel;
-        internal Queue<byte> IncomingData = new Queue<byte>();
+        #region Fields
+
+        private SSHChannel              m_Channel;
+        internal Queue<byte>    IncomingData = new Queue<byte>();
+
+        #endregion
+
+        #region .ctor
 
         public SshTunnelStream(SSHChannel channel)
         {
-            this.channel = channel;
+            this.m_Channel = channel;
         }
+
+        #endregion
+
+        #region Public
 
         /// <summary>
         /// Receives data from tunnel.
@@ -53,11 +63,11 @@ namespace NFX.Erlang
                 hasData = IncomingData.Count > 0;
 
             //if channel is closed and no data in buffer, return 0
-            if (!channel.Connection.IsOpen && !hasData)
+            if (!m_Channel.Connection.IsOpen && !hasData)
                 return 0;
 
             //wait while data will be available
-            while (!hasData)
+            while (!hasData && m_Channel.Connection.IsOpen)
             {
                 Thread.Sleep(50);
                 //check data available
@@ -81,7 +91,7 @@ namespace NFX.Erlang
         /// </summary>
         public override void Write(byte[] buffer, int offset, int count)
         {
-            channel.Transmit(buffer, offset, count);
+            m_Channel.Transmit(buffer, offset, count);
         }
 
         /// <summary>
@@ -91,14 +101,6 @@ namespace NFX.Erlang
         {
             base.Close();
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            channel.Close();
-            base.Dispose(disposing);
-        }
-
-        #region Stream
 
         public override void Flush()
         {
@@ -145,6 +147,16 @@ namespace NFX.Erlang
         public override bool CanWrite
         {
             get { return true; }
+        }
+
+        #endregion
+
+        #region Protected
+
+        protected override void Dispose(bool disposing)
+        {
+            m_Channel.Close();
+            base.Dispose(disposing);
         }
 
         #endregion

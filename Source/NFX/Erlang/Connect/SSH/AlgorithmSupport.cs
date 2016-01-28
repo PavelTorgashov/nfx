@@ -29,17 +29,11 @@ namespace Granados.Crypto {
     /// <summary>
     /// Creates a cipher from given parameters
     /// </summary>
-    internal class CipherFactory {
+    internal class CipherFactory 
+    {
         public static Cipher CreateCipher(SSHProtocol protocol, CipherAlgorithm algorithm, byte[] key) {
             if (protocol == SSHProtocol.SSH1) {
-                switch (algorithm) {
-                    case CipherAlgorithm.TripleDES:
-                        return new SSH1.TripleDESCipher1(key);
-                    case CipherAlgorithm.Blowfish:
-                        return new SSH1.BlowfishCipher1(key);
-                    default:
-                        throw new SSHException("unknown algorithm " + algorithm);
-                }
+                throw new SSHException("SSH1 is not supported");
             }
             else {
                 switch (algorithm) {
@@ -52,7 +46,8 @@ namespace Granados.Crypto {
                 }
             }
         }
-        public static Cipher CreateCipher(SSHProtocol protocol, CipherAlgorithm algorithm, byte[] key, byte[] iv) {
+        public static Cipher CreateCipher(SSHProtocol protocol, CipherAlgorithm algorithm, byte[] key, byte[] iv) 
+        {
             if (protocol == SSHProtocol.SSH1) { //ignoring iv
                 return CreateCipher(protocol, algorithm, key);
             }
@@ -204,71 +199,6 @@ namespace Granados.Crypto {
     }
 }
 
-namespace Granados.Crypto.SSH1 {
-
-    using Granados.Algorithms;
-
-    /// <summary>
-    /// Blowfish for SSH1
-    /// </summary>
-    internal class BlowfishCipher1 : Cipher {
-        private Blowfish _bf;
-
-        public BlowfishCipher1(byte[] key) {
-            Debug.Assert(key.Length == 32);
-            _bf = new Blowfish();
-            _bf.initializeKey(key);
-        }
-        public void Encrypt(byte[] data, int offset, int len, byte[] result, int ro) {
-            _bf.encryptSSH1Style(data, offset, len, result, ro);
-        }
-        public void Decrypt(byte[] data, int offset, int len, byte[] result, int ro) {
-            _bf.decryptSSH1Style(data, offset, len, result, ro);
-        }
-        public int BlockSize {
-            get {
-                return 8;
-            }
-        }
-    }
-
-    /// <summary>
-    /// TripleDES for SSH1
-    /// </summary>
-    internal class TripleDESCipher1 : Cipher {
-        private DES _DESCipher1;
-        private DES _DESCipher2;
-        private DES _DESCipher3;
-
-        public TripleDESCipher1(byte[] key) {
-            Debug.Assert(key.Length == 24);
-            _DESCipher1 = new DES();
-            _DESCipher2 = new DES();
-            _DESCipher3 = new DES();
-
-            _DESCipher1.InitializeKey(key, 0);
-            _DESCipher2.InitializeKey(key, 8);
-            _DESCipher3.InitializeKey(key, 16);
-        }
-        public void Encrypt(byte[] data, int offset, int len, byte[] result, int ro) {
-            _DESCipher1.EncryptCBC(data, offset, len, result, ro);
-            _DESCipher2.DecryptCBC(result, ro, len, result, ro);
-            _DESCipher3.EncryptCBC(result, ro, len, result, ro);
-        }
-        public void Decrypt(byte[] data, int offset, int len, byte[] result, int ro) {
-            _DESCipher3.DecryptCBC(data, offset, len, result, ro);
-            _DESCipher2.EncryptCBC(result, ro, len, result, ro);
-            _DESCipher1.DecryptCBC(result, ro, len, result, ro);
-        }
-        public int BlockSize {
-            get {
-                return 8;
-            }
-        }
-    }
-
-}
-
 namespace Granados.Crypto.SSH2 {
 
     using Granados.Algorithms;
@@ -408,5 +338,4 @@ namespace Granados.Crypto.SSH2 {
             }
         }
     }
-
 }

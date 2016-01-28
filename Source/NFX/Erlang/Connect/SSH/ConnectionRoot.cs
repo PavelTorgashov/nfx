@@ -14,7 +14,6 @@ using System.Net.Sockets;
 using System.Text;
 using Granados.Crypto;
 using Granados.PKI;
-using Granados.SSH1;
 using Granados.SSH2;
 using Granados.IO;
 using Granados.Util;
@@ -244,7 +243,7 @@ namespace Granados {
 
             SSHConnection con = null;
             if (param.Protocol == SSHProtocol.SSH1)
-                con = new SSH1Connection(param, s, receiver, sv, SSHUtil.ClientVersionString(param.Protocol));
+                throw new SSHException("SSH1 is not supported");
             else
                 con = new SSH2Connection(param, s, receiver, sv, SSHUtil.ClientVersionString(param.Protocol));
 

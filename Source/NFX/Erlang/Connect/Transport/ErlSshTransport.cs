@@ -24,6 +24,7 @@ using System.Text;
 using System.Threading;
 using Granados;
 using Granados.PKI;
+using NFX.Environment;
 
 namespace NFX.Erlang
 {
@@ -31,50 +32,96 @@ namespace NFX.Erlang
     /// SSH tunnel transport.
     /// Provides tcp connection through SSH tunnel.
     /// </summary>
-    public class ErlSshTransport : IErlTransport, ISSHConnectionEventReceiver, ISSHChannelEventReceiver
+    public class ErlSshTransport : IErlTransport, ISSHConnectionEventReceiver, ISSHChannelEventReceiver, ISSHEventTracer, IConfigurable
     {
-        Socket client;
-        SSHConnection conn;
-        SSHChannel channel;
-        SshTunnelStream stream;
-        IPEndPoint remoteTarget;
-        bool ready;
+        #region CONSTS / Enums
 
-        const int DEFAULT_SSH_PORT = 22;
+        private const int DEFAULT_SSH_PORT                      = 22;
+        private const int DEFAULT_SSH_TUNNEL_CREATION_TIMEOUT   = 20000;//ms
+
+        #endregion;
+
+        #region Static
+
+        static IPAddress ResolveHost(string hostname)
+        {
+            IPAddress res;
+
+            if (!IPAddress.TryParse(hostname, out res))
+                res = Dns.GetHostAddresses(hostname)[0];
+
+            return res;
+        }
+
+        #endregion
+
+        #region Fields
+
+        private Socket          m_Client;
+        private SSHConnection   m_Connection;
+        private SSHChannel      m_Channel;
+        private SshTunnelStream m_Stream;
+        private IPEndPoint      m_RemoteTarget;
+        private bool            m_IsChannelReady;
+
+        #endregion;
+
+        #region Events
 
         /// <summary>
-        /// Port of SSH server (by default: 22)
+        /// Transmits trace messages
         /// </summary>
-        public int SSHServerPort { get; set; }
-        /// <summary>
-        /// Host of SSH server (by default: same as target host)
-        /// </summary>
-        public string SSHServerHost { get; set; }
-        /// <summary>
-        /// SSH user name
-        /// </summary>
-        public string SSHUserName { get; set; }
-        /// <summary>
-        /// SSH user password
-        /// </summary>
-        public string SSHUserPassword { get; set; }
-        /// <summary>
-        /// Identity key file path (only for AuthenticationType = PublicKey)
-        /// </summary>
-        public string SSHKeyFilePath { get; set; }
-        /// <summary>
-        /// Type of auth on SSH server
-        /// </summary>
-        public AuthenticationType AuthenticationType { get; set; }
+        public event TraceEventHandler Trace = delegate { };
+
+        #endregion
+
+        #region .ctor
 
         public ErlSshTransport()
         {
             //default settings
             AuthenticationType = AuthenticationType.Password;
             SSHServerPort = DEFAULT_SSH_PORT;
+            SSHTunnelCreationTimeout = DEFAULT_SSH_TUNNEL_CREATION_TIMEOUT;
             //create socket
-            client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            m_Client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
+
+        #endregion
+
+        #region Public
+
+        /// <summary>
+        /// Port of SSH server (by default: 22)
+        /// </summary>
+        [Config]
+        public int SSHServerPort { get; set; }
+        /// <summary>
+        /// SSH user name
+        /// </summary>
+        [Config]
+        public string SSHUserName { get; set; }
+        /// <summary>
+        /// SSH user password (or private key file passphrase)
+        /// </summary>
+        [Config]
+        public string SSHUserPassword { get; set; }
+        /// <summary>
+        /// Private key file path (only for AuthenticationType = PublicKey)
+        /// Required SSH2 ENCRYPTED PRIVATE KEY format.
+        /// </summary>
+        [Config]
+        public string SSHPrivateKeyFilePath { get; set; }
+        /// <summary>
+        /// Timeout of creation of SSH tunnel, ms (by default: 20000 ms)
+        /// </summary>
+        [Config]
+        public int SSHTunnelCreationTimeout { get; set; }
+        /// <summary>
+        /// Type of auth on SSH server
+        /// </summary>
+        [Config]
+        public AuthenticationType AuthenticationType { get; set; }
 
         /// <summary>
         /// Connect to remote host:port over SSH tunnel
@@ -83,77 +130,78 @@ namespace NFX.Erlang
         {
             Console.WriteLine("Ssh tunnel: {0}:{1}", host, port);//temp !!!!!
 
-            //remember remote target
-            remoteTarget = new IPEndPoint(ResolveHost(host), port);
-
-            //connect to SSH server
-            var sshHost = string.IsNullOrEmpty(SSHServerHost) ? host : SSHServerHost;
-            client.Connect(new IPEndPoint(ResolveHost(sshHost), SSHServerPort));
-
-            //set params
-            var param = new SSHConnectionParameter();
-            param.EventTracer = new Tracer(); //to receive detailed events, set ISSHEventTracer
-            param.UserName = SSHUserName;
-            param.Password = SSHUserPassword;
-            param.Protocol = SSHProtocol.SSH2;
-            param.AuthenticationType = AuthenticationType;
-            if (AuthenticationType == Granados.AuthenticationType.PublicKey)
-                param.IdentityFile = SSHKeyFilePath;
-
-            //former algorithm is given priority in the algorithm negotiation
-            param.PreferableHostKeyAlgorithms = new PublicKeyAlgorithm[] { PublicKeyAlgorithm.DSA, PublicKeyAlgorithm.RSA };
-            param.PreferableCipherAlgorithms = new CipherAlgorithm[] { CipherAlgorithm.Blowfish, CipherAlgorithm.TripleDES, CipherAlgorithm.AES192CTR };
-
-            param.WindowSize = 0x1000; //this option is ignored with SSH1
-
-            //Creating a new SSH connection over the underlying socket
-            conn = SSHConnection.Connect(param, this, client);
-            conn.AutoDisconnect = true;
-
-            //Local->Remote port forwarding (we use localhost:0 as local port, because local port is not required for us, we will use this tunnel directly)
-            channel = conn.ForwardPort(this, host, port, "localhost", 0);
-            while (!ready)
-                System.Threading.Thread.Sleep(50); //wait response
-
-            //create network stream
-            stream = new SshTunnelStream(channel);
-
-            //Remote->Local
-            // if you want to listen to a port on the SSH server, follow this line:
-            //_conn.ListenForwardedPort("0.0.0.0", 10000);
-
-            //NOTE: if you use SSH2, dynamic key exchange feature is supported.
-            //((SSH2Connection)_conn).ReexchangeKeys();
-        }
-
-        static IPAddress ResolveHost(string hostname)
-        {
             try
             {
-                return IPAddress.Parse(hostname);
+
+                //remember remote target
+                m_RemoteTarget = new IPEndPoint(ResolveHost(host), port);
+
+                //connect to SSH server
+                m_Client.Connect(new IPEndPoint(m_RemoteTarget.Address, SSHServerPort));
+
+                //set params
+                var param = new SSHConnectionParameter();
+                param.EventTracer = this; //to receive detailed events
+                param.UserName = SSHUserName;
+                param.Password = SSHUserPassword;
+                param.Protocol = SSHProtocol.SSH2;
+                param.AuthenticationType = AuthenticationType;
+
+                if (AuthenticationType == AuthenticationType.PublicKey)
+                    param.IdentityFile = SSHPrivateKeyFilePath;
+
+                //former algorithm is given priority in the algorithm negotiation
+                param.PreferableHostKeyAlgorithms = new PublicKeyAlgorithm[] { PublicKeyAlgorithm.RSA, PublicKeyAlgorithm.DSA };
+                param.PreferableCipherAlgorithms = new CipherAlgorithm[] { CipherAlgorithm.Blowfish, CipherAlgorithm.TripleDES, CipherAlgorithm.AES192CTR, CipherAlgorithm.AES256CTR, CipherAlgorithm.AES128CTR };
+
+                param.WindowSize = 0x1000; //this option is ignored with SSH1
+
+                //Creating a new SSH connection over the underlying socket
+                m_Connection = SSHConnection.Connect(param, this, m_Client);
+                m_Connection.AutoDisconnect = true;
+                m_IsChannelReady = false;
+
+                //Local->Remote port forwarding (we use localhost:0 as local port, because local port is not required for us, we will use this tunnel directly)
+                m_Channel = m_Connection.ForwardPort(this, host, port, "localhost", 0);
+                var deadLine = DateTime.Now.AddMilliseconds(SSHTunnelCreationTimeout);
+                while (!m_IsChannelReady && deadLine > DateTime.Now)
+                    System.Threading.Thread.Sleep(50); //wait response
+
+                //if timeouted - throw exception
+                if (!m_IsChannelReady && deadLine < DateTime.Now)
+                    throw new ErlException(StringConsts.ERL_CREATE_SSH_TUNNEL_ERROR);
+
+                //create network stream
+                m_Stream = new SshTunnelStream(m_Channel);
+
+                //Remote->Local
+                // if you want to listen to a port on the SSH server, follow this line:
+                //_conn.ListenForwardedPort("0.0.0.0", 10000);
+
+                //NOTE: if you use SSH2, dynamic key exchange feature is supported.
+                //((SSH2Connection)_conn).ReexchangeKeys();
             }
-            catch (FormatException)
+            catch (Exception ex)
             {
-                return Dns.GetHostAddresses(hostname)[0];
+                OnTrace(ErlTraceLevel.Ctrl, Direction.Inbound, ex.Message);
+                throw;
             }
         }
-
-        #region IErlTransport
 
         public Stream GetStream()
         {
-            return stream;
+            return m_Stream;
         }
 
         public int ReceiveBufferSize
         {
             get
             {
-                return client.ReceiveBufferSize;
+                return m_Client.ReceiveBufferSize;
             }
             set
             {
-                client.ReceiveBufferSize = value;
+                m_Client.ReceiveBufferSize = value;
             }
         }
 
@@ -161,11 +209,11 @@ namespace NFX.Erlang
         {
             get
             {
-                return client.SendBufferSize;
+                return m_Client.SendBufferSize;
             }
             set
             {
-                client.SendBufferSize = value;
+                m_Client.SendBufferSize = value;
             }
         }
 
@@ -173,104 +221,101 @@ namespace NFX.Erlang
         {
             get
             {
-                return client.NoDelay;
+                return m_Client.NoDelay;
             }
             set
             {
-                client.NoDelay = value;
+                m_Client.NoDelay = value;
             }
         }
 
         public void Close()
         {
-            client.Close();
+            m_Client.Close();
         }
 
         public void Dispose()
         {
-            client.Dispose();
+            m_Client.Dispose();
         }
 
         public void SetSocketOption(SocketOptionLevel optionLevel, SocketOptionName optionName, bool optionValue)
         {
-            client.SetSocketOption(optionLevel, optionName, optionValue);
+            m_Client.SetSocketOption(optionLevel, optionName, optionValue);
         }
 
         public EndPoint RemoteEndPoint
         {
-            get { return remoteTarget; }
+            get { return m_RemoteTarget; }
         }
-
-        #endregion
-
-        #region ISSHConnectionEventReceiver, ISSHChannelEventReceiver
 
         public void OnData(byte[] data, int offset, int length)
         {
             if (length > 0)
-            lock (stream.IncomingData)
+            lock (m_Stream.IncomingData)
                 for (int i = 0; i < length; i++)
-                    stream.IncomingData.Enqueue(data[i + offset]);
+                    m_Stream.IncomingData.Enqueue(data[i + offset]);
         }
 
         public void OnDebugMessage(bool always_display, byte[] data)
         {
-            Debug.Write("DEBUG: " + Encoding.ASCII.GetString(data) + "\r\n");
+            OnTrace(ErlTraceLevel.Ctrl, Direction.Inbound, "DEBUG: " + Encoding.ASCII.GetString(data));
         }
 
         public void OnIgnoreMessage(byte[] data)
         {
-            Debug.Write("Ignore: " + Encoding.ASCII.GetString(data) + "\r\n");
+            OnTrace(ErlTraceLevel.Ctrl, Direction.Inbound, "Ignore: " + Encoding.ASCII.GetString(data));
         }
 
         public void OnAuthenticationPrompt(string[] msg)
         {
-            Debug.Write("Auth Prompt " + (msg.Length > 0 ? msg[0] : "(empty)") + "\r\n");
+            OnTrace(ErlTraceLevel.Ctrl, Direction.Inbound, "Auth Prompt " + (msg.Length > 0 ? msg[0] : "(empty)"));
         }
 
         public void OnError(Exception error)
         {
-            Debug.Write("ERROR: " + error.Message + "\r\n");
-            Debug.Write(error.StackTrace + "\r\n");
+            OnTrace(ErlTraceLevel.Ctrl, Direction.Inbound, "ERROR: " + error.Message);
         }
 
         public void OnChannelClosed()
         {
-            Debug.Write("Channel closed" + "\r\n");
+            OnTrace(ErlTraceLevel.Ctrl, Direction.Inbound, "Channel closed");
             //_conn.AsyncReceive(this);
         }
 
         public void OnChannelEOF()
         {
-            channel.Close();
-            Debug.Write("Channel EOF" + "\r\n");
+            m_Channel.Close();
+
+            OnTrace(ErlTraceLevel.Ctrl, Direction.Inbound, "Channel EOF");
             //close connection
-            conn.Close();
+            m_Connection.Close();
         }
 
         public void OnExtendedData(int type, byte[] data)
         {
-            Debug.Write("EXTENDED DATA" + "\r\n");
+            OnTrace(ErlTraceLevel.Ctrl, Direction.Inbound, "EXTENDED DATA");
         }
 
         public void OnConnectionClosed()
         {
-            Debug.Write("Connection closed" + "\r\n");
+            OnTrace(ErlTraceLevel.Ctrl, Direction.Inbound, "Connection closed");
         }
 
         public void OnUnknownMessage(byte type, byte[] data)
         {
-            Debug.Write("Unknown Message " + type + "\r\n");
+            OnTrace(ErlTraceLevel.Ctrl, Direction.Inbound, "Unknown Message " + type);
         }
 
         public void OnChannelReady()
         {
-            ready = true;
+            m_IsChannelReady = true;
+            OnTrace(ErlTraceLevel.Ctrl, Direction.Inbound, "Channel Ready");
         }
 
         public void OnChannelError(Exception error)
         {
-            Debug.Write("Channel ERROR: " + error.Message + "\r\n");
+            OnTrace(ErlTraceLevel.Ctrl, Direction.Inbound, "Channel ERROR: " + error.Message);
         }
 
         public void OnMiscPacket(byte type, byte[] data, int offset, int length)
@@ -287,22 +332,33 @@ namespace NFX.Erlang
 
         public void EstablishPortforwarding(ISSHChannelEventReceiver rec, SSHChannel channel)
         {
-            this.channel = channel;
+            this.m_Channel = channel;
+        }
+
+        public void OnTranmission(string type, string detail)
+        {
+            OnTrace(ErlTraceLevel.Ctrl, Direction.Outbound, "T:" + type + ":" + detail);
+        }
+
+        public void OnReception(string type, string detail)
+        {
+            OnTrace(ErlTraceLevel.Ctrl, Direction.Inbound, "R:" + type + ":" + detail);
+        }
+
+        public void Configure(IConfigSectionNode node)
+        {
         }
 
         #endregion
-    }
 
+        #region Private
 
-    class Tracer : ISSHEventTracer
-    {
-        public void OnTranmission(string type, string detail)
+        private void OnTrace(ErlTraceLevel level, Direction dir, string message)
         {
-            Debug.Write("T:" + type + ":" + detail + "\r\n");
+            Console.WriteLine(message);//temp!!!!
+            Trace(this, level, dir, "SSH " + message);
         }
-        public void OnReception(string type, string detail)
-        {
-            Debug.Write("R:" + type + ":" + detail + "\r\n");
-        }
+
+        #endregion
     }
 }
