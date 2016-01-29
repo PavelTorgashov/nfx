@@ -17,7 +17,7 @@ namespace NFX.Erlang
         #region Fields
 
         private SSHChannel          m_Channel;
-        private Queue<byte>         IncomingData = new Queue<byte>();
+        private Queue<byte>         incomingData = new Queue<byte>();
         private AutoResetEvent      dataAvailableSignaler = new AutoResetEvent(false);
 
         #endregion
@@ -40,13 +40,13 @@ namespace NFX.Erlang
         public object SyncObject { get; private set; }
 
         /// <summary>
-        /// Enqueues data to IncomingData queue
+        /// Enqueues data to incoming queue
         /// </summary>
         public void EnqueueData(byte[] data, int offset, int count)
         {
             //copy data to incoming queue
             for (int i = 0; i < count; i++)
-                IncomingData.Enqueue(data[i + offset]);
+                incomingData.Enqueue(data[i + offset]);
 
             //send signal to Read method
             dataAvailableSignaler.Set();
@@ -63,7 +63,7 @@ namespace NFX.Erlang
 
             //check data available
             lock (SyncObject)
-                hasData = IncomingData.Count > 0;
+                hasData = incomingData.Count > 0;
 
             //if channel is closed and no data in buffer, return 0
             if (!m_Channel.Connection.IsOpen && !hasData)
@@ -77,15 +77,15 @@ namespace NFX.Erlang
 
                 //check data available
                 lock (SyncObject)
-                    hasData = IncomingData.Count > 0;
+                    hasData = incomingData.Count > 0;
             }
 
             //copy data from incoming queue to output buffer
             lock (SyncObject)
             {
-                var c = Math.Min(count, IncomingData.Count);
+                var c = Math.Min(count, incomingData.Count);
                 for (int i = 0; i < c; i++)
-                    buffer[i + offset] = IncomingData.Dequeue();
+                    buffer[i + offset] = incomingData.Dequeue();
 
                 return c;
             }
