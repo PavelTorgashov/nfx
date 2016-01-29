@@ -34,8 +34,14 @@ namespace NFX.Erlang
 
         #region Public
 
+        /// <summary>
+        /// Sync object to access to IncomingData queue
+        /// </summary>
         public object SyncObject { get; private set; }
 
+        /// <summary>
+        /// Enqueues data to IncomingData queue
+        /// </summary>
         public void EnqueueData(byte[] data, int offset, int count)
         {
             for (int i = 0; i < count; i++)
