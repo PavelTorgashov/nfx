@@ -69,7 +69,7 @@ namespace NFX.Erlang
                 dataAvailableSignaler.Reset();
 
                 //check data available
-                lock (IncomingData)
+                lock (SyncObject)
                     hasData = IncomingData.Count > 0;
             }
 
