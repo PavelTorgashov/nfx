@@ -18,7 +18,7 @@ namespace NFX.Erlang
 
         private SSHChannel          m_Channel;
         private Queue<byte>         IncomingData = new Queue<byte>();
-        private ManualResetEvent    dataAvailableSignaler = new ManualResetEvent(false);
+        private AutoResetEvent      dataAvailableSignaler = new AutoResetEvent(false);
 
         #endregion
 
@@ -44,9 +44,11 @@ namespace NFX.Erlang
         /// </summary>
         public void EnqueueData(byte[] data, int offset, int count)
         {
+            //copy data to incoming queue
             for (int i = 0; i < count; i++)
                 IncomingData.Enqueue(data[i + offset]);
 
+            //send signal to Read method
             dataAvailableSignaler.Set();
         }
 
@@ -72,7 +74,6 @@ namespace NFX.Erlang
             {
                 //wait for signal of data available (or recheck that connecton is open every 50 ms)
                 dataAvailableSignaler.WaitOne(50);
-                dataAvailableSignaler.Reset();
 
                 //check data available
                 lock (SyncObject)
