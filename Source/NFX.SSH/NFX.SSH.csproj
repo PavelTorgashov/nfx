@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B3F23285-D532-4429-9955-5750ADA1665A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NFX.SSH</RootNamespace>
+    <AssemblyName>NFX.SSH</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SSH\AgentForward.cs" />
+    <Compile Include="SSH\AlgorithmSupport.cs" />
+    <Compile Include="SSH\Base64.cs" />
+    <Compile Include="SSH\BigInteger.cs" />
+    <Compile Include="SSH\Blowfish.cs" />
+    <Compile Include="SSH\ChannelCollection.cs" />
+    <Compile Include="SSH\CipherUtil.cs" />
+    <Compile Include="SSH\ConnectionInfo.cs" />
+    <Compile Include="SSH\ConnectionParameter.cs" />
+    <Compile Include="SSH\ConnectionRoot.cs" />
+    <Compile Include="SSH\DataFragment.cs" />
+    <Compile Include="SSH\DES.cs" />
+    <Compile Include="SSH\DSA.cs" />
+    <Compile Include="SSH\LibraryClient.cs" />
+    <Compile Include="SSH\PKIBase.cs" />
+    <Compile Include="SSH\PrimeSieve.cs" />
+    <Compile Include="SSH\ReaderWriter.cs" />
+    <Compile Include="SSH\Rijndael.cs" />
+    <Compile Include="SSH\Rng.cs" />
+    <Compile Include="SSH\RSA.cs" />
+    <Compile Include="SSH\SCP.cs" />
+    <Compile Include="SSH\Socket.cs" />
+    <Compile Include="SSH\SSH2Connection.cs" />
+    <Compile Include="SSH\SSH2Packet.cs" />
+    <Compile Include="SSH\SSH2UserAuthKey.cs" />
+    <Compile Include="SSH\SSH2Util.cs" />
+    <Compile Include="SSH\SSHUtil.cs" />
+    <Compile Include="SSH\StringResource.cs" />
+    <Compile Include="Transport\ErlSshTransport.cs" />
+    <Compile Include="Transport\SshTunnelStream.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SSH\strings.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NFX\NFX.csproj">
+      <Project>{e6bfa4d5-d2be-4be1-80fe-4536a22f5c45}</Project>
+      <Name>NFX</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

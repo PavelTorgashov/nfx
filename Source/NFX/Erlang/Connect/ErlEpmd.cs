@@ -79,9 +79,20 @@ namespace NFX.Erlang
 
       try
       {
-        var obuf = new ErlOutputStream(
-            writeVersion: false, capacity: 4 + 3 + node.AliveName.Length + 1);
-        s = node.Epmd ?? new ErlTransportFactory().Create(node.Host, EPMD_PORT);
+        var obuf = new ErlOutputStream(writeVersion: false, capacity: 4 + 3 + node.AliveName.Length + 1);
+        s = node.Epmd;
+
+        if (s == null)
+        {
+            //create transport
+            s = ErlTransportFactory.Create(node.TransportClassName, node.NodeName.Value);
+
+            //append SSH params to transport
+            node.AppendSSHParamsToTransport(s);
+
+            //connect (I am not sure)
+            s.Connect(node.Host, EPMD_PORT);
+        }
 
         // build and send epmd request
         // length[2], tag[1], alivename[n] (length = n+1)
@@ -173,9 +184,8 @@ namespace NFX.Erlang
 
       try
       {
-        ErlOutputStream obuf = new ErlOutputStream(
-            writeVersion: false, capacity: node.AliveName.Length + 20);
-        s = node.Epmd ?? new ErlTransportFactory().Create(ErlLocalNode.LocalHost, EPMD_PORT);
+        ErlOutputStream obuf = new ErlOutputStream(writeVersion: false, capacity: node.AliveName.Length + 20);
+        s = node.Epmd ?? new ErlTcpTransport(ErlLocalNode.LocalHost, EPMD_PORT) { NodeName = node.NodeName.Value };
 
         obuf.Write2BE(node.AliveName.Length + 13);
 
@@ -259,7 +269,7 @@ namespace NFX.Erlang
 
       try
       {
-        s = node.Epmd ?? new ErlTransportFactory().Create(ErlLocalNode.LocalHost, EPMD_PORT);
+        s = node.Epmd ?? new ErlTcpTransport(ErlLocalNode.LocalHost, EPMD_PORT) { NodeName = node.NodeName.Value };
         ErlOutputStream obuf = new ErlOutputStream(
             writeVersion: false, capacity: node.AliveName.Length + 8);
         obuf.Write2BE(node.AliveName.Length + 1);

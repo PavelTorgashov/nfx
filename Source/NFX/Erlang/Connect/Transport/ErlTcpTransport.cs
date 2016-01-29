@@ -21,11 +21,12 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using NFX.Environment;
 
 namespace NFX.Erlang
 {
     /// <summary>
-    /// TCP transport.
+    /// TCP transport
     /// </summary>
     public class ErlTcpTransport : IErlTransport
     {
@@ -64,6 +65,8 @@ namespace NFX.Erlang
         #endregion
 
         #region Public
+
+        public string NodeName { get; set; }
 
         public int ReceiveBufferSize
         {
@@ -130,6 +133,16 @@ namespace NFX.Erlang
         {
             get { return m_Client.Client.RemoteEndPoint; }
         }
+
+        public int SSHServerPort { get; set; }
+
+        public string SSHUserName { get; set; }
+
+        public string SSHPrivateKeyFilePath { get; set; }
+
+        public int SSHTunnelCreationTimeout { get; set; }
+
+        public string SSHAuthenticationType { get; set; }
 
         #endregion
     }

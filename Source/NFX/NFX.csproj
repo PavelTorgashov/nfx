@@ -119,40 +119,10 @@
     <Compile Include="DataAccess\CRUD\Subscriptions\Mailbox.cs" />
     <Compile Include="DataAccess\CRUD\Subscriptions\Subscription.cs" />
     <Compile Include="DataAccess\CRUD\Subscriptions\SubscriptionAppComponent.cs" />
-    <Compile Include="Erlang\Connect\SSH\AgentForward.cs" />
-    <Compile Include="Erlang\Connect\SSH\AlgorithmSupport.cs" />
-    <Compile Include="Erlang\Connect\SSH\Base64.cs" />
-    <Compile Include="Erlang\Connect\SSH\BigInteger.cs" />
-    <Compile Include="Erlang\Connect\SSH\Blowfish.cs" />
-    <Compile Include="Erlang\Connect\SSH\ChannelCollection.cs" />
-    <Compile Include="Erlang\Connect\SSH\CipherUtil.cs" />
-    <Compile Include="Erlang\Connect\SSH\ConnectionInfo.cs" />
-    <Compile Include="Erlang\Connect\SSH\ConnectionParameter.cs" />
-    <Compile Include="Erlang\Connect\SSH\ConnectionRoot.cs" />
-    <Compile Include="Erlang\Connect\SSH\DataFragment.cs" />
-    <Compile Include="Erlang\Connect\SSH\DES.cs" />
-    <Compile Include="Erlang\Connect\SSH\DSA.cs" />
-    <Compile Include="Erlang\Connect\SSH\LibraryClient.cs" />
-    <Compile Include="Erlang\Connect\SSH\PKIBase.cs" />
-    <Compile Include="Erlang\Connect\SSH\PrimeSieve.cs" />
-    <Compile Include="Erlang\Connect\SSH\ReaderWriter.cs" />
-    <Compile Include="Erlang\Connect\SSH\Rijndael.cs" />
-    <Compile Include="Erlang\Connect\SSH\Rng.cs" />
-    <Compile Include="Erlang\Connect\SSH\RSA.cs" />
-    <Compile Include="Erlang\Connect\SSH\SCP.cs" />
-    <Compile Include="Erlang\Connect\SSH\Socket.cs" />
-    <Compile Include="Erlang\Connect\SSH\SSH2Connection.cs" />
-    <Compile Include="Erlang\Connect\SSH\SSH2Packet.cs" />
-    <Compile Include="Erlang\Connect\SSH\SSH2UserAuthKey.cs" />
-    <Compile Include="Erlang\Connect\SSH\SSH2Util.cs" />
-    <Compile Include="Erlang\Connect\SSH\SSHUtil.cs" />
-    <Compile Include="Erlang\Connect\SSH\StringResource.cs" />
-    <Compile Include="Erlang\Connect\SSH\Tutorial.cs" />
-    <Compile Include="Erlang\Connect\Transport\ErlSshTransport.cs" />
     <Compile Include="Erlang\Connect\Transport\ErlTcpTransport.cs" />
     <Compile Include="Erlang\Connect\Transport\ErlTransportFactory.cs" />
+    <Compile Include="Erlang\Connect\Transport\ErlTransportPasswordSource.cs" />
     <Compile Include="Erlang\Connect\Transport\IErlTransport.cs" />
-    <Compile Include="Erlang\Connect\Transport\SshTunnelStream.cs" />
     <Compile Include="Erlang\DataAccess\ErlCRUDMailbox.cs" />
     <Compile Include="Erlang\DataAccess\ErlCRUDQueryExecutionContext.cs" />
     <Compile Include="Erlang\DataAccess\ErlCRUDScriptQueryHandler.cs" />
@@ -719,7 +689,6 @@
     <None Include="EMPTY_CLASS_TEMPLATE.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Erlang\Connect\SSH\strings.resx" />
     <EmbeddedResource Include="Parsing\JackLondon.txt" />
   </ItemGroup>
   <ItemGroup>

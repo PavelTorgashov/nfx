@@ -432,6 +432,9 @@ namespace NFX.Erlang
       m_Transport.SetSocketOption(
           System.Net.Sockets.SocketOptionLevel.Socket,
           System.Net.Sockets.SocketOptionName.DontLinger, !RemoteNode.TcpLinger);
+
+      //set SSH params
+      RemoteNode.AppendSSHParamsToTransport(m_Transport);
     }
 
     private void onReadWrite(Direction op, int lastBytes, long totalBytes, long totalMsgs)
@@ -501,7 +504,8 @@ namespace NFX.Erlang
     {
       try
       {
-        m_Transport = new ErlTransportFactory().Create();
+        m_Transport = ErlTransportFactory.Create(RemoteNode.TransportClassName, RemoteNode.NodeName.Value);
+
         setSockOpts();
         //m_TcpClient.ReceiveTimeout = 5000;
         var connected = false;

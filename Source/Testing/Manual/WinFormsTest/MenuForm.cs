@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 
 using NFX;
+using NFX.Erlang;
 
 namespace WinFormsTest
 {
@@ -191,6 +192,22 @@ Performance
     private void btnChartDemo_Click(object sender, EventArgs e)
     {
       new ChartFormDemo().Show();
+    }
+
+    private void btnErlang_Click(object sender, EventArgs e)
+    {
+        //connect to erlang
+        var n = new ErlLocalNode("b", new ErlAtom("hahaha"));
+        n.AcceptConnections = false;
+        n.Start();
+
+        var m = n.CreateMbox("test");
+
+        var res = n.Send(m.Self, "r@127.0.0.1", "me", new ErlString("Hello! " + DateTime.Now));
+        if (!res)
+            Console.WriteLine("Can not send message");
+        else
+            Console.WriteLine("Message sent");
     }
   }
 }

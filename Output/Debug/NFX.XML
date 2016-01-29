@@ -2974,774 +2974,9 @@
             Allows to attach arbtrary bject for correlation
             </summary>
         </member>
-        <member name="T:Granados.ISSHChannelEventReceiver">
+        <member name="T:NFX.Erlang.ErlTcpTransport">
             <summary>
-            Channel specific receiver 
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.Crypto.CipherFactory">
-            <summary>
-            Creates a cipher from given parameters
-            </summary>
-        </member>
-        <member name="M:Granados.Crypto.CipherFactory.GetKeySize(Granados.CipherAlgorithm)">
-            <summary>
-            returns necessary key size from Algorithm in bytes
-            </summary>
-        </member>
-        <member name="M:Granados.Crypto.CipherFactory.GetBlockSize(Granados.CipherAlgorithm)">
-            <summary>
-            returns the block size from Algorithm in bytes
-            </summary>
-        </member>
-        <member name="T:Granados.Crypto.SSH2.BlowfishCipher2">
-            <summary>
-            Blowfish for SSH2
-            </summary>
-        </member>
-        <member name="T:Granados.Crypto.SSH2.TripleDESCipher2">
-            <summary>
-            TripleDES for SSH2
-            </summary>
-        </member>
-        <member name="T:Granados.Crypto.SSH2.RijindaelCipher2">
-            <summary>
-            Rijindael (SSH2 only)
-            </summary>
-        </member>
-        <member name="T:Granados.Util.Base64">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="M:Granados.Util.Base64.Encode(System.Byte[])">
-            <summary>
-            
-            </summary>
-            <param name="data"></param>
-            <returns></returns>
-            <exclude/>
-        </member>
-        <member name="M:Granados.Util.Base64.Decode(System.Byte[])">
-            <summary>
-            
-            </summary>
-            <param name="data"></param>
-            <returns></returns>
-            <exclude/>
-        </member>
-        <member name="M:Granados.Util.Base64.Decode(System.Byte[],System.Int32,System.Int32)">
-            <summary>
-            
-            </summary>
-            <param name="encoded"></param>
-            <param name="offset"></param>
-            <param name="length"></param>
-            <returns></returns>
-            <exclude/>
-        </member>
-        <member name="M:Granados.Util.Base64.Encode(System.Byte[],System.Int32,System.Int32)">
-            <summary>
-            
-            </summary>
-            <param name="data"></param>
-            <param name="offset"></param>
-            <param name="length"></param>
-            <returns></returns>
-            <exclude/>
-        </member>
-        <member name="M:Granados.Util.Base64.test">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.BigInteger">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="F:Granados.BigInteger.primesBelow2000">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="F:Granados.BigInteger.dataLength">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="M:Granados.BigInteger.#ctor">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="M:Granados.BigInteger.#ctor(System.Int64)">
-            <summary>
-            
-            </summary>
-            <param name="value"></param>
-            <exclude/>
-        </member>
-        <member name="M:Granados.BigInteger.#ctor(System.UInt64)">
-            <summary>
-            
-            </summary>
-            <param name="value"></param>
-            <exclude/>
-        </member>
-        <member name="M:Granados.BigInteger.#ctor(Granados.BigInteger)">
-            <summary>
-            
-            </summary>
-            <param name="bi"></param>
-            <exclude/>
-        </member>
-        <member name="M:Granados.BigInteger.#ctor(System.String,System.Int32)">
-            <summary>
-            
-            </summary>
-            <param name="value"></param>
-            <param name="radix"></param>
-            <exclude/>
-        </member>
-        <member name="M:Granados.BigInteger.#ctor(System.Byte[])">
-            <summary>
-            
-            </summary>
-            <param name="inData"></param>
-            <exclude/>
-        </member>
-        <member name="M:Granados.BigInteger.#ctor(System.Byte[],System.Int32)">
-            <summary>
-            
-            </summary>
-            <param name="inData"></param>
-            <param name="inLen"></param>
-            <exclude/>
-        </member>
-        <member name="M:Granados.BigInteger.#ctor(System.UInt32[])">
-            <summary>
-            
-            </summary>
-            <param name="inData"></param>
-            <exclude/>
-        </member>
-        <member name="M:Granados.BigInteger.op_Implicit(System.Int64)~Granados.BigInteger">
-            <summary>
-            
-            </summary>
-            <param name="value"></param>
-            <returns></returns>
-            <exclude/>
-        </member>
-        <member name="M:Granados.BigInteger.op_Implicit(System.UInt64)~Granados.BigInteger">
-            <summary>
-            
-            </summary>
-            <param name="value"></param>
-            <returns></returns>
-            <exclude/>
-        </member>
-        <member name="M:Granados.BigInteger.op_Implicit(System.Int32)~Granados.BigInteger">
-            <summary>
-            
-            </summary>
-            <param name="value"></param>
-            <returns></returns>
-            <exclude/>
-        </member>
-        <member name="M:Granados.BigInteger.op_Implicit(System.UInt32)~Granados.BigInteger">
-            <summary>
-            
-            </summary>
-            <param name="value"></param>
-            <returns></returns>
-            <exclude/>
-        </member>
-        <member name="M:Granados.BigInteger.op_Addition(Granados.BigInteger,Granados.BigInteger)">
-            <summary>
-            
-            </summary>
-            <param name="bi1"></param>
-            <param name="bi2"></param>
-            <returns></returns>
-            <exclude/>
-        </member>
-        <member name="T:Granados.Algorithms.Blowfish">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.ChannelCollection">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.ChannelCollection.Entry">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.Crypto.CipherUtil">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.SSHConnectionInfo">
-            <summary>
-            ConnectionInfo describes the attributes of the host or the connection.
-            It is available after the connection is established without any errors.
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.SSH2.SSH2ConnectionInfo">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.SSHConnectionParameter">
-            <summary>
-            Fill the properties of ConnectionParameter object before you start the connection.
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.ISSHEventTracer">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.SSHConnection">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="M:Granados.SSHConnection.Connect">
-            internal procedure for opening connection
-        </member>
-        <member name="M:Granados.SSHConnection.Disconnect(System.String)">
-            terminates this connection
-        </member>
-        <member name="M:Granados.SSHConnection.OpenShell(Granados.ISSHChannelEventReceiver)">
-            opens a pseudo terminal
-        </member>
-        <member name="M:Granados.SSHConnection.ForwardPort(Granados.ISSHChannelEventReceiver,System.String,System.Int32,System.String,System.Int32)">
-            forwards the remote end to another host
-        </member>
-        <member name="M:Granados.SSHConnection.ListenForwardedPort(System.String,System.Int32)">
-            listens a connection on the remote end
-        </member>
-        <member name="M:Granados.SSHConnection.CancelForwardedPort(System.String,System.Int32)">
-            cancels binded port
-        </member>
-        <member name="M:Granados.SSHConnection.Close">
-            closes socket directly.
-        </member>
-        <member name="M:Granados.SSHConnection.SendIgnorableData(System.String)">
-            sends ignorable data: the server may record the message into the log
-        </member>
-        <member name="M:Granados.SSHConnection.OpenPortForwardedAnotherConnection(Granados.SSHConnectionParameter,Granados.ISSHConnectionEventReceiver,System.String,System.Int32)">
-            opens another SSH connection via port-forwarded connection
-        </member>
-        <member name="M:Granados.SSHConnection.Connect(Granados.SSHConnectionParameter,Granados.ISSHConnectionEventReceiver,System.Net.Sockets.Socket)">
-            open a new SSH connection via the .NET socket
-        </member>
-        <member name="P:Granados.SSHConnection.PacketBuilder">
-            abstract properties
-        </member>
-        <member name="P:Granados.SSHConnection.Param">
-             paramters
-        </member>
-        <member name="T:Granados.ChannelType">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.SSHChannel">
-            the base class for SSH channels
-            <exclude/>
-        </member>
-        <member name="M:Granados.SSHChannel.ResizeTerminal(System.Int32,System.Int32,System.Int32,System.Int32)">
-            resizes the size of terminal
-        </member>
-        <member name="M:Granados.SSHChannel.Transmit(System.Byte[])">
-            transmits channel data 
-        </member>
-        <member name="M:Granados.SSHChannel.Transmit(System.Byte[],System.Int32,System.Int32)">
-            transmits channel data 
-        </member>
-        <member name="M:Granados.SSHChannel.SendEOF">
-            sends EOF(SSH2 only)
-        </member>
-        <member name="M:Granados.SSHChannel.Close">
-            closes this channel
-        </member>
-        <member name="T:Granados.IO.DataFragment">
-            <summary>
-            DataFragment represents one or more tuples of (byte[], offset, length).
-            To reduce memory usage, the source byte[] will not be copied.
-            If this behavior is not convenient, call Isolate() method.
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.IO.SimpleMemoryStream">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.Algorithms.DES">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.PKI.DSAKeyPair">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.PKI.KeyPair">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.PKI.ISigner">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.PKI.IVerifier">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.PKI.DSAPublicKey">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.PKI.PublicKey">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.HostKeyCheckCallback">
-            <summary>
-            
-            </summary>
-            <param name="connectionInfo"></param>
-            <returns></returns>
-            <exclude/>
-        </member>
-        <member name="T:Granados.PortForwardingCheckResult">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="F:Granados.PortForwardingCheckResult.allowed">
-            if you allow this request, set 'allowed' to true.
-        </member>
-        <member name="F:Granados.PortForwardingCheckResult.channel">
-            if you allow this request, you must set 'channel' for this request. otherwise, 'channel' is ignored
-        </member>
-        <member name="F:Granados.PortForwardingCheckResult.reason_code">
-                     * if you disallow this request, you can set 'reason_code'.
-                        The following reason codes are defined:
-            
-                        #define SSH_OPEN_ADMINISTRATIVELY_PROHIBITED    1
-                        #define SSH_OPEN_CONNECT_FAILED                 2
-                        #define SSH_OPEN_UNKNOWN_CHANNEL_TYPE           3
-                        #define SSH_OPEN_RESOURCE_SHORTAGE              4
-        </member>
-        <member name="F:Granados.PortForwardingCheckResult.reason_message">
-            if you disallow this request, you can set 'reason_message'. this message can contain only ASCII characters.
-        </member>
-        <member name="T:Granados.ISSHConnectionEventReceiver">
-            <summary>
-            Connection specific receiver
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.PKI.IKeyWriter">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.PKI.PublicKeyAlgorithm">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.PKI.PKIUtil">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.PKI.VerifyException">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.PKI.PrimeSieve">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.IO.SSHDataReader">
-            read/write primitive types
-            
-        </member>
-        <member name="M:Granados.IO.SSHDataReader.ReadMPInt">
-            multi-precise integer
-        </member>
-        <member name="T:Granados.Algorithms.Rijndael">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="F:Granados.Algorithms.Rijndael.BLOCK_SIZE">
-            <summary>
-            constants
-            </summary>
-        </member>
-        <member name="T:Granados.Rng">
-            <summary>
-            Random number generator
-            </summary>
-        </member>
-        <member name="M:Granados.Rng.GetBytes(System.Byte[])">
-            <summary>
-            Fills an array of bytes with random values.
-            </summary>
-            <param name="data">array to fill with random values.</param>
-        </member>
-        <member name="M:Granados.Rng.GetInt(System.Int32)">
-            <summary>
-            Returns a random number between 0 and maxValue-1
-            </summary>
-        </member>
-        <member name="T:Granados.RngManager">
-            <summary>
-            Random number generation utility
-            </summary>
-        </member>
-        <member name="M:Granados.RngManager.GetSystemRandomRng">
-            <summary>
-            Get a new instance which implements Rng using <see cref="T:System.Random"/>
-            </summary>
-            <remarks>An instance returned should be used in the same thread.</remarks>
-            <returns>a new instance</returns>
-        </member>
-        <member name="M:Granados.RngManager.GetSecureRng">
-            <summary>
-            Get a new instance which implements Rng using <see cref="T:System.Random"/>
-            </summary>
-            <remarks>An instance returned should be used in the same thread.</remarks>
-            <returns>a new instance</returns>
-        </member>
-        <member name="T:Granados.RngManager.SecureRng">
-            <summary>
-            implementation of Rng
-            </summary>
-            <remarks>An instance returned should be used in the same thread.</remarks>
-        </member>
-        <member name="T:Granados.RngManager.SystemRandomRng">
-            <summary>
-            implementation of Rng
-            </summary>
-        </member>
-        <member name="T:Granados.PKI.RSAKeyPair">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.PKI.RSAPublicKey">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.PKI.RSAUtil">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.SCPProgression">
-            <summary>
-            
-            </summary>
-            <param name="processed_length"></param>
-            <param name="total_length"></param>
-            <exclude/>
-        </member>
-        <member name="T:Granados.SCPCopyDirection">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.ScpLocalSource">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.ScpParameter">
-            <summary>
-            Fill the properties of ScpParameter object before you start the connection with SCP protocol.
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.IO.SocketStatus">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.IO.IDataHandler">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.IO.AbstractGranadosSocket">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.SSH2.SSH2Connection">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.SSH2.SSH2Channel">
-            Channel
-            <exclude/>
-        </member>
-        <member name="T:Granados.SSH2.KeyExchanger">
-            Key Exchange
-        </member>
-        <member name="T:Granados.SSH2.SSH2UserAuthKey">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.SSH2.PacketType">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.SSH2.DisconnectReason">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.SSH2.ChannelOpenFailureReason">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="M:Granados.Util.SSHUtil.WriteIntToByteArray(System.Byte[],System.Int32,System.Int32)">
-            Network-byte-orderで32ビット値を書き込む。
-        </member>
-        <member name="T:Granados.SSHException">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.SSHProtocol">
-            <summary>
-            <ja>SSHプロトコルの種類を示します</ja>
-            <en>Kind of SSH protocol</en>
-            </summary>
-        </member>
-        <member name="F:Granados.SSHProtocol.SSH1">
-            <summary>
-            <ja>SSH1</ja>
-            <en>SSH1</en>
-            </summary>
-        </member>
-        <member name="F:Granados.SSHProtocol.SSH2">
-            <summary>
-            <ja>SSH2</ja>
-            <en>SSH2</en>
-            </summary>
-        </member>
-        <member name="T:Granados.CipherAlgorithm">
-            <summary>
-            <ja>
-            アルゴリズムの種類を示します。
-            </ja>
-            <en>
-            Kind of algorithm
-            </en>
-            </summary>
-        </member>
-        <member name="F:Granados.CipherAlgorithm.TripleDES">
-            <summary>
-            TripleDES
-            </summary>
-        </member>
-        <member name="F:Granados.CipherAlgorithm.Blowfish">
-            <summary>
-            BlowFish
-            </summary>
-        </member>
-        <member name="F:Granados.CipherAlgorithm.AES128">
-            <summary>
-            <ja>AES128（SSH2のみ有効）</ja>
-            <en>AES128（SSH2 only）</en>
-            </summary>
-        </member>
-        <member name="F:Granados.CipherAlgorithm.AES192">
-            <summary>
-            <ja>AES192（SSH2のみ有効）</ja>
-            <en>AES192（SSH2 only）</en>
-            </summary>
-        </member>
-        <member name="F:Granados.CipherAlgorithm.AES256">
-            <summary>
-            <ja>AES256（SSH2のみ有効）</ja>
-            <en>AES256（SSH2 only）</en>
-            </summary>
-        </member>
-        <member name="F:Granados.CipherAlgorithm.AES128CTR">
-            <summary>
-            <ja>AES128-CTR（SSH2のみ有効）</ja>
-            <en>AES128-CTR（SSH2 only）</en>
-            </summary>
-        </member>
-        <member name="F:Granados.CipherAlgorithm.AES192CTR">
-            <summary>
-            <ja>AES192-CTR（SSH2のみ有効）</ja>
-            <en>AES192-CTR（SSH2 only）</en>
-            </summary>
-        </member>
-        <member name="F:Granados.CipherAlgorithm.AES256CTR">
-            <summary>
-            <ja>AES256-CTR（SSH2のみ有効）</ja>
-            <en>AES256-CTR（SSH2 only）</en>
-            </summary>
-        </member>
-        <member name="T:Granados.AuthenticationType">
-            <summary>
-            <ja>認証方式を示します。</ja>
-            <en>Kind of authentification method</en>
-            </summary>
-        </member>
-        <member name="F:Granados.AuthenticationType.PublicKey">
-            <summary>
-            <en>Public key cryptosystem</en>
-            </summary>
-        </member>
-        <member name="F:Granados.AuthenticationType.Password">
-            <summary>
-            <en>Password Authentication</en>
-            </summary>
-        </member>
-        <member name="F:Granados.AuthenticationType.KeyboardInteractive">
-            <summary>
-            <en>KeyboardInteractive</en>
-            </summary>
-        </member>
-        <member name="T:Granados.AuthenticationResult">
-            <summary>
-            <ja>
-            認証結果を示します。
-            </ja>
-            <en>
-            Result of authentication.
-            </en>
-            </summary>
-        </member>
-        <member name="F:Granados.AuthenticationResult.Success">
-            <summary>
-            <ja>成功</ja>
-            <en>Succeed</en>
-            </summary>
-        </member>
-        <member name="F:Granados.AuthenticationResult.Failure">
-            <summary>
-            <ja>失敗</ja>
-            <en>Failed</en>
-            </summary>
-        </member>
-        <member name="F:Granados.AuthenticationResult.Prompt">
-            <summary>
-            <ja>プロンプト</ja>
-            <en>Prompt</en>
-            </summary>
-        </member>
-        <member name="T:Granados.MACAlgorithm">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.KexAlgorithm">
-            <summary>
-            <ja>鍵交換アルゴリズム</ja>
-            <en>key exchange algorighm</en>
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.Util.Strings">
-            <summary>
-            
-            </summary>
-            <exclude/>
-        </member>
-        <member name="T:Granados.Util.StringResources">
-            <summary>
-            StringResource の概要の説明です。
-            </summary>
-        </member>
-        <member name="T:Granados.Util.GlobalResources">
-            <summary>
-            Returns resource from entry assembly
-            </summary>
-        </member>
-        <member name="T:NFX.Erlang.ErlSshTransport">
-            <summary>
-            SSH tunnel transport.
-            Provides tcp connection through SSH tunnel.
+            TCP transport
             </summary>
         </member>
         <member name="T:NFX.Erlang.IErlTransport">
@@ -3756,7 +2991,7 @@
         </member>
         <member name="M:NFX.Erlang.IErlTransport.Connect(System.String,System.Int32)">
             <summary>
-            Connects to remote host:port by TCP
+            Connects to remote host:port
             </summary>
         </member>
         <member name="M:NFX.Erlang.IErlTransport.Close">
@@ -3794,50 +3029,35 @@
             Trace event
             </summary>
         </member>
-        <member name="M:NFX.Erlang.ErlSshTransport.Connect(System.String,System.Int32)">
+        <member name="P:NFX.Erlang.IErlTransport.NodeName">
             <summary>
-            Connect to remote host:port over SSH tunnel
+            Erlang node name
             </summary>
         </member>
-        <member name="E:NFX.Erlang.ErlSshTransport.Trace">
+        <member name="P:NFX.Erlang.IErlTransport.SSHServerPort">
             <summary>
-            Transmits trace messages
+            Port of SSH server
             </summary>
         </member>
-        <member name="P:NFX.Erlang.ErlSshTransport.SSHServerPort">
-            <summary>
-            Port of SSH server (by default: 22)
-            </summary>
-        </member>
-        <member name="P:NFX.Erlang.ErlSshTransport.SSHUserName">
+        <member name="P:NFX.Erlang.IErlTransport.SSHUserName">
             <summary>
             SSH user name
             </summary>
         </member>
-        <member name="P:NFX.Erlang.ErlSshTransport.SSHUserPassword">
-            <summary>
-            SSH user password (or private key file passphrase)
-            </summary>
-        </member>
-        <member name="P:NFX.Erlang.ErlSshTransport.SSHPrivateKeyFilePath">
+        <member name="P:NFX.Erlang.IErlTransport.SSHPrivateKeyFilePath">
             <summary>
             Private key file path (only for AuthenticationType = PublicKey)
             Required SSH2 ENCRYPTED PRIVATE KEY format.
             </summary>
         </member>
-        <member name="P:NFX.Erlang.ErlSshTransport.SSHTunnelCreationTimeout">
+        <member name="P:NFX.Erlang.IErlTransport.SSHTunnelCreationTimeout">
             <summary>
-            Timeout of creation of SSH tunnel, ms (by default: 20000 ms)
+            Timeout of creation of SSH tunnel, ms
             </summary>
         </member>
-        <member name="P:NFX.Erlang.ErlSshTransport.AuthenticationType">
+        <member name="P:NFX.Erlang.IErlTransport.SSHAuthenticationType">
             <summary>
             Type of auth on SSH server
-            </summary>
-        </member>
-        <member name="T:NFX.Erlang.ErlTcpTransport">
-            <summary>
-            TCP transport.
             </summary>
         </member>
         <member name="E:NFX.Erlang.ErlTcpTransport.Trace">
@@ -3850,26 +3070,29 @@
             Factory of IErlTransport
             </summary>
         </member>
-        <member name="T:NFX.Erlang.SshTunnelStream">
+        <member name="T:NFX.Erlang.ErlTransportPasswordSource">
             <summary>
-            Stream of data transmitted/received by SSH tunnel
+            Source of passwrod for transport (i.e. for SSH connection)
+            </summary>
+            <remarks>
+            When IErlTransport requires password, it will call method GetPassword() of this class.
+            The app must to handle event PasswordRequired to return password.
+            </remarks>
+        </member>
+        <member name="M:NFX.Erlang.ErlTransportPasswordSource.GetPassword(System.Object,System.String,System.String)">
+            <summary>
+            Returns password for specified userName and nodeName
             </summary>
         </member>
-        <member name="M:NFX.Erlang.SshTunnelStream.Read(System.Byte[],System.Int32,System.Int32)">
+        <member name="E:NFX.Erlang.ErlTransportPasswordSource.PasswordRequired">
             <summary>
-            Receives data from tunnel.
-            If connection is closed and no data in buffer - returns 0.
-            If tunnel is not closed and no data in buffer - blocks thread while data will be received.
+            Called when SSH(or other secure tansport) user password (or private key file passphrase) is required.
+            Handler must to return password for specified userName and nodeName
             </summary>
         </member>
-        <member name="M:NFX.Erlang.SshTunnelStream.Write(System.Byte[],System.Int32,System.Int32)">
+        <member name="T:NFX.Erlang.PasswordRequiredEventHandler">
             <summary>
-            Sends data into tunnel
-            </summary>
-        </member>
-        <member name="M:NFX.Erlang.SshTunnelStream.Close">
-            <summary>
-            Closes stream and tunnel
+            Delegate is called when SSH tunnel requires password for authentication
             </summary>
         </member>
         <member name="T:NFX.DataAccess.Erlang.ErlCRUDMailbox">
@@ -7000,6 +6223,11 @@
             Record unhandled msgs to log
             </summary>
         </member>
+        <member name="P:NFX.Erlang.ErlLocalNode.RemoteNodeConfigs">
+            <summary>
+            Configs for remote nodes
+            </summary>
+        </member>
         <member name="E:NFX.Erlang.ErlLocalNode.Trace">
             <summary>
             Trace callback executed if connection tracing is enabled
@@ -7536,12 +6764,48 @@
             Create a peer node
             </summary>
         </member>
+        <member name="M:NFX.Erlang.ErlRemoteNode.#ctor(NFX.Erlang.ErlLocalNode,NFX.Erlang.ErlAtom,NFX.Environment.IConfigSettings,System.Nullable{NFX.Erlang.ErlAtom})">
+            <summary>
+            Create a peer node
+            </summary>
+        </member>
         <member name="M:NFX.Erlang.ErlRemoteNode.Connect(NFX.Erlang.ErlLocalNode)">
             <summary>
             Create a connection to a remote node
             </summary>
             <param name="self">the local node from which you wish to connect</param>
             <returns>A connection to the remote node</returns>
+        </member>
+        <member name="P:NFX.Erlang.ErlRemoteNode.TransportClassName">
+            <summary>
+            Full name of transport class (if not specified - it uses ErlTcpTransport)
+            </summary>
+        </member>
+        <member name="P:NFX.Erlang.ErlRemoteNode.SSHServerPort">
+            <summary>
+            Port of SSH server
+            </summary>
+        </member>
+        <member name="P:NFX.Erlang.ErlRemoteNode.SSHUserName">
+            <summary>
+            SSH user name
+            </summary>
+        </member>
+        <member name="P:NFX.Erlang.ErlRemoteNode.SSHPrivateKeyFilePath">
+            <summary>
+            Private key file path (only for AuthenticationType = PublicKey)
+            Required SSH2 ENCRYPTED PRIVATE KEY format.
+            </summary>
+        </member>
+        <member name="P:NFX.Erlang.ErlRemoteNode.SSHTunnelCreationTimeout">
+            <summary>
+            Timeout of creation of SSH tunnel, ms
+            </summary>
+        </member>
+        <member name="P:NFX.Erlang.ErlRemoteNode.SSHAuthenticationType">
+            <summary>
+            Type of auth on SSH server
+            </summary>
         </member>
         <member name="P:NFX.Erlang.Internal.ErlBlockingQueue`1.Handle">
             <summary>

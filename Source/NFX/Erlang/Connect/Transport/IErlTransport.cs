@@ -21,8 +21,10 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
+using NFX.Environment;
 
 namespace NFX.Erlang
 {
@@ -44,7 +46,7 @@ namespace NFX.Erlang
         /// </summary>
         Stream GetStream();
         /// <summary>
-        /// Connects to remote host:port by TCP
+        /// Connects to remote host:port
         /// </summary>
         void Connect(string host, int port);
         /// <summary>
@@ -67,5 +69,30 @@ namespace NFX.Erlang
         /// Trace event
         /// </summary>
         event TraceEventHandler Trace;
+        /// <summary>
+        /// Erlang node name
+        /// </summary>
+        string NodeName { get; set; }
+        /// <summary>
+        /// Port of SSH server
+        /// </summary>
+        int SSHServerPort { get; set; }
+        /// <summary>
+        /// SSH user name
+        /// </summary>
+        string SSHUserName { get; set; }
+        /// <summary>
+        /// Private key file path (only for AuthenticationType = PublicKey)
+        /// Required SSH2 ENCRYPTED PRIVATE KEY format.
+        /// </summary>
+        string SSHPrivateKeyFilePath { get; set; }
+        /// <summary>
+        /// Timeout of creation of SSH tunnel, ms
+        /// </summary>
+        int SSHTunnelCreationTimeout { get; set; }
+        /// <summary>
+        /// Type of auth on SSH server
+        /// </summary>
+        string SSHAuthenticationType { get; set; }
     }
 }

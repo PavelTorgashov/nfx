@@ -15,24 +15,29 @@
 * limitations under the License.
 </FILE_LICENSE>*/
 
+using System.Linq;
+using NFX.Environment;
+
 namespace NFX.Erlang
 {
     /// <summary>
     /// Factory of IErlTransport
     /// </summary>
-    public class ErlTransportFactory
+    public static class ErlTransportFactory
     {
         #region Public
 
-        public IErlTransport Create()
+        public static IErlTransport Create(string transportTypeFullName, string remoteNodeName)
         {
-            //return new ErlTcpTransport();
-            return new ErlSshTransport() { SSHUserName = "Pasha", SSHUserPassword = "123456", SSHPrivateKeyFilePath = "c:\\key.bin", AuthenticationType = Granados.AuthenticationType.PublicKey };//temp!!!!
+            var res = FactoryUtils.Make<IErlTransport>(string.Format("nfx{{type=\"{0}\"}}", transportTypeFullName).AsLaconicConfig(), typeof(ErlTcpTransport));
+            res.NodeName = remoteNodeName;
+
+            return res;
         }
 
-        public IErlTransport Create(string host, int port)
+        public static IErlTransport Create(string transportTypeFullName, string remoteNodeName, string host, int port)
         {
-            var res = Create();
+            var res = Create(transportTypeFullName, remoteNodeName);
             res.Connect(host, port);
 
             return res;

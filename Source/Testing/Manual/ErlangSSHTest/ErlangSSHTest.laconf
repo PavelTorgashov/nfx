@@ -1,0 +1,38 @@
+﻿//format=laconic
+
+// For testing this config start an Erlang shell like this:
+//     werl -sname r@localhost -setcookie hahaha
+
+nfx
+{
+    starters 
+	{
+        starter{ name="Erlang" type="NFX.Erlang.ErlApp" }
+    }
+
+	erlang
+	{
+		cookie="hahaha"
+
+		node="b" 
+		{
+			is-local=true
+            accept=true
+            address="localhost" // address="127.0.0.1:1234"
+        }
+
+		node="r@localhost"			//here is node with SSH server
+		{
+			//here you can use following params: 
+			// transport-type (fully qualified class name of transport i.e. "NFX.Erlang.ErlSshTransport, NFX.SSH")
+			// ssh-server-port
+			// ssh-user-name
+			// ssh-private-key-file (full path to SSH2 private key file)
+			// ssh-tunnel-creation-timeout (in ms)
+			// ssh-authentication-type (Password or PublicKey)
+
+			transport-type = "NFX.Erlang.ErlSshTransport, NFX.SSH"	//here we inject SSH transport calss instead of TCP transport
+			ssh-user-name = "Guest" //enter here your user account to connect to SSH server
+		}
+	}
+}
