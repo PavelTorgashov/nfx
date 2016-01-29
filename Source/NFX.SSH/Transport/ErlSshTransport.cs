@@ -227,12 +227,10 @@ namespace NFX.Erlang
             get { return m_RemoteTarget; }
         }
 
-        public void OnData(byte[] data, int offset, int length)
+        public void OnData(byte[] data, int offset, int count)
         {
-            if (length > 0)
-            lock (m_Stream.IncomingData)
-                for (int i = 0; i < length; i++)
-                    m_Stream.IncomingData.Enqueue(data[i + offset]);
+            lock (m_Stream.SyncObject)
+                m_Stream.EnqueueData(data, offset, count);
         }
 
         public void OnDebugMessage(bool always_display, byte[] data)
