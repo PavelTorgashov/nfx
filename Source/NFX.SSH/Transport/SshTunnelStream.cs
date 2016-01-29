@@ -54,7 +54,7 @@ namespace NFX.Erlang
             var hasData = false;
 
             //check data available
-            lock (IncomingData)
+            lock (SyncObject)
                 hasData = IncomingData.Count > 0;
 
             //if channel is closed and no data in buffer, return 0
