@@ -17,8 +17,8 @@ namespace NFX.Erlang
         #region Fields
 
         private SSHChannel          m_Channel;
-        private Queue<byte>         incomingData = new Queue<byte>();
-        private AutoResetEvent      dataAvailableSignaler = new AutoResetEvent(false);
+        private Queue<byte>         m_IncomingData = new Queue<byte>();
+        private AutoResetEvent      m_DataAvailableSignaler = new AutoResetEvent(false);
 
         #endregion
 
@@ -27,7 +27,6 @@ namespace NFX.Erlang
         public SshTunnelStream(SSHChannel channel)
         {
             this.m_Channel = channel;
-            SyncObject = new object();
         }
 
         #endregion
@@ -35,21 +34,17 @@ namespace NFX.Erlang
         #region Public
 
         /// <summary>
-        /// Sync object to access to IncomingData queue
-        /// </summary>
-        public object SyncObject { get; private set; }
-
-        /// <summary>
         /// Enqueues data to incoming queue
         /// </summary>
         public void EnqueueData(byte[] data, int offset, int count)
         {
             //copy data to incoming queue
+            lock(m_IncomingData)
             for (int i = 0; i < count; i++)
-                incomingData.Enqueue(data[i + offset]);
+                m_IncomingData.Enqueue(data[i + offset]);
 
             //send signal to Read method
-            dataAvailableSignaler.Set();
+            m_DataAvailableSignaler.Set();
         }
 
         /// <summary>
@@ -62,8 +57,8 @@ namespace NFX.Erlang
             var hasData = false;
 
             //check data available
-            lock (SyncObject)
-                hasData = incomingData.Count > 0;
+            lock (m_IncomingData)
+                hasData = m_IncomingData.Count > 0;
 
             //if channel is closed and no data in buffer, return 0
             if (!m_Channel.Connection.IsOpen && !hasData)
@@ -73,19 +68,19 @@ namespace NFX.Erlang
             while (!hasData && m_Channel.Connection.IsOpen)
             {
                 //wait for signal of data available (or recheck that connecton is open every 50 ms)
-                dataAvailableSignaler.WaitOne(50);
+                m_DataAvailableSignaler.WaitOne(50);
 
                 //check data available
-                lock (SyncObject)
-                    hasData = incomingData.Count > 0;
+                lock (m_IncomingData)
+                    hasData = m_IncomingData.Count > 0;
             }
 
             //copy data from incoming queue to output buffer
-            lock (SyncObject)
+            lock (m_IncomingData)
             {
-                var c = Math.Min(count, incomingData.Count);
+                var c = Math.Min(count, m_IncomingData.Count);
                 for (int i = 0; i < c; i++)
-                    buffer[i + offset] = incomingData.Dequeue();
+                    buffer[i + offset] = m_IncomingData.Dequeue();
 
                 return c;
             }

@@ -14,6 +14,7 @@ TestResults
 *.sln.docstates
 
 # Build results
+[Oo]utput/
 [Dd]ebug/
 [Rr]elease/
 x64/
@@ -89,6 +90,7 @@ csx
 AppPackages/
 
 # Others
+*.auto.cs
 [Bb]in
 [Oo]bj
 sql

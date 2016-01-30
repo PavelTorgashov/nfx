@@ -229,8 +229,7 @@ namespace NFX.Erlang
 
         public void OnData(byte[] data, int offset, int count)
         {
-            lock (m_Stream.SyncObject)
-                m_Stream.EnqueueData(data, offset, count);
+            m_Stream.EnqueueData(data, offset, count);
         }
 
         public void OnDebugMessage(bool always_display, byte[] data)
