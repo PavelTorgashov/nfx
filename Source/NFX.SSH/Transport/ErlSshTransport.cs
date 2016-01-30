@@ -330,6 +330,7 @@ namespace NFX.Erlang
 
         private void OnTrace(ErlTraceLevel level, Direction dir, string message)
         {
+            Console.WriteLine(message);//!!!!! 
             Trace(this, level, dir, "SSH " + message);
         }
 

@@ -7,6 +7,8 @@
  $Id: ConnectionParameter.cs,v 1.5 2011/10/27 23:21:56 kzmi Exp $
 */
 
+#define PODEROSA_KEYFORMAT
+
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -17,7 +19,7 @@ using NFX.SSH.Util;
 using NFX.SSH.IO.SSH2;
 using NFX.SSH.Crypto;
 #if PODEROSA_KEYFORMAT
-using Granados.Poderosa.KeyFormat;
+using NFX.SSH.Poderosa.KeyFormat;
 #endif
 
 namespace NFX.SSH.SSH2 {
@@ -110,13 +112,16 @@ namespace NFX.SSH.SSH2 {
         {
             StreamReader r = new StreamReader(strm, Encoding.ASCII);
             string l = r.ReadLine();
-            if (l == null || l != "---- BEGIN SSH2 ENCRYPTED PRIVATE KEY ----")
+            if (l == null || (l != "---- BEGIN SSH2 ENCRYPTED PRIVATE KEY ----" &&
+                              l != "-----BEGIN RSA PRIVATE KEY-----"))
                 throw new SSHException("Wrong key format (expected SSH2 ENCRYPTED PRIVATE KEY)");
 
             string comment = "";
             l = r.ReadLine();
             StringBuilder buf = new StringBuilder();
-            while (l != "---- END SSH2 ENCRYPTED PRIVATE KEY ----") {
+            while (l != "---- END SSH2 ENCRYPTED PRIVATE KEY ----" && 
+                   l != "-----END RSA PRIVATE KEY-----")
+            {
                 if (l.IndexOf(':') == -1)
                     buf.Append(l);
                 else if (l[l.Length - 1] == '\\')
@@ -136,8 +141,8 @@ namespace NFX.SSH.SSH2 {
 
             SSH2DataReader re = new SSH2DataReader(keydata);
             int magic = re.ReadInt32();
-            if (magic != MAGIC_VAL)
-                throw new SSHException("key file is broken");
+            /*if (magic != MAGIC_VAL)
+                throw new SSHException("key file is broken");*/
             int privateKeyLen = re.ReadInt32();
             string type = Encoding.ASCII.GetString(re.ReadString());
 

@@ -58,6 +58,16 @@
     <Compile Include="SSH\DSA.cs" />
     <Compile Include="SSH\LibraryClient.cs" />
     <Compile Include="SSH\PKIBase.cs" />
+    <Compile Include="SSH\Poderosa\FileTransfer\Cancellation.cs" />
+    <Compile Include="SSH\Poderosa\KeyFormat\BERReader.cs" />
+    <Compile Include="SSH\Poderosa\KeyFormat\ByteArrayUtil.cs" />
+    <Compile Include="SSH\Poderosa\KeyFormat\ISSH2PrivateKeyLoader.cs" />
+    <Compile Include="SSH\Poderosa\KeyFormat\OpenSSHPrivateKeyLoader.cs" />
+    <Compile Include="SSH\Poderosa\KeyFormat\PrivateKeyFileFormat.cs" />
+    <Compile Include="SSH\Poderosa\KeyFormat\PrivateKeyFileHeader.cs" />
+    <Compile Include="SSH\Poderosa\KeyFormat\PrivateKeyLoader.cs" />
+    <Compile Include="SSH\Poderosa\KeyFormat\PuTTYPrivateKeyLoader.cs" />
+    <Compile Include="SSH\Poderosa\KeyFormat\SSHComPrivateKeyLoader.cs" />
     <Compile Include="SSH\PrimeSieve.cs" />
     <Compile Include="SSH\ReaderWriter.cs" />
     <Compile Include="SSH\Rijndael.cs" />

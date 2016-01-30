@@ -268,7 +268,7 @@ namespace NFX.SSH.Util {
 
         //load resource corresponding to current culture
         public static void Reload() {
-            //_strings = new StringResources("Granados.strings", typeof(Strings).Assembly);
+            //_strings = new StringResources("NFX.SSH.strings", typeof(Strings).Assembly);
             _strings = new StringResources("NFX.strings", typeof(Strings).Assembly);
             
         }

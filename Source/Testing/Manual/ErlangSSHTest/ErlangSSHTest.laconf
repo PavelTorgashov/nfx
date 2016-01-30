@@ -33,6 +33,8 @@ nfx
 
 			transport-type = "NFX.Erlang.ErlSshTransport, NFX.SSH"	//here we inject SSH transport calss instead of TCP transport
 			ssh-user-name = "Guest" //enter here your user account to connect to SSH server
+			ssh-private-key-file="c:\\rsa.bin"
+			ssh-authentication-type="PublicKey"
 		}
 	}
 }
