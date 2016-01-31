@@ -312,12 +312,12 @@ namespace NFX.Erlang
 
         public void OnTranmission(string type, string detail)
         {
-            OnTrace(ErlTraceLevel.Ctrl, Direction.Outbound, "T:" + type + ":" + detail);
+            OnTrace(ErlTraceLevel.Ctrl, Direction.Outbound, "SSH:" + type + ":" + detail);
         }
 
         public void OnReception(string type, string detail)
         {
-            OnTrace(ErlTraceLevel.Ctrl, Direction.Inbound, "R:" + type + ":" + detail);
+            OnTrace(ErlTraceLevel.Ctrl, Direction.Inbound, "SSH:" + type + ":" + detail);
         }
 
         public void Configure(IConfigSectionNode node)
@@ -330,7 +330,7 @@ namespace NFX.Erlang
 
         private void OnTrace(ErlTraceLevel level, Direction dir, string message)
         {
-            Console.WriteLine(message);//!!!!! 
+            //Console.WriteLine(message);
             Trace(this, level, dir, "SSH " + message);
         }
 

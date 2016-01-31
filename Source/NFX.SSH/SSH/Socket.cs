@@ -345,12 +345,18 @@ namespace NFX.SSH.IO {
         }
 
         internal override void Close() {
-            if (_socketStatus != SocketStatus.Closed) {
-                _socket.Shutdown(SocketShutdown.Both);
-                _socket.Close();
-                _socketStatus = SocketStatus.Closed;
-                FireOnClosed();
-            }
+            if (_socketStatus != SocketStatus.Closed)
+                try {
+                    if (_socket.Connected) { 
+                        _socket.Shutdown(SocketShutdown.Both);
+                        _socket.Close();
+                        FireOnClosed();
+                    }
+                }
+                catch   {}
+                finally {
+                    _socketStatus = SocketStatus.Closed;
+                }
         }
 
         internal void RepeatAsyncRead() {

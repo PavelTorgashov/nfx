@@ -78,6 +78,8 @@ namespace NFX.Erlang
       m_SentBytes = 0;
       m_ReceivedBytes = 0;
       m_MaxPayloadLength = DEFAULT_MAX_PAYLOAD_LENGTH;
+      if (m_Transport != null)
+        m_Transport.Trace += (o, t, d, msg) => home.OnTrace(t, d, msg);
     }
 
     /// <summary>
@@ -305,10 +307,21 @@ namespace NFX.Erlang
       if (m_Connected)
         throw new ErlException(StringConsts.ERL_CONN_ALREADY_CONNECTED_ERROR);
 
-      // now get a connection between the two...
-      int port = ErlEpmd.LookupPort(LocalNode, m_Peer, true);
+      if (m_Transport != null)
+        m_Transport.Trace += (o, t, d, msg) => m_Home.OnTrace(t, d, msg);
 
-      doConnect(port);
+      int port = 0;
+
+      using (var ps = ErlTransportPasswordSource.StartPasswordSession(m_Peer.NodeName, m_Peer.SSHUserName))
+      {
+          // now get a connection between the two...
+          port = ErlEpmd.LookupPort(LocalNode, m_Peer, true);
+
+          if (port == 0)
+              throw new ErlException(StringConsts.ERL_EPMD_INVALID_PORT_ERROR.Args(m_Peer.NodeName));
+
+          doConnect(port);
+      }
 
       m_Peer.Port = port;
 
@@ -505,6 +518,8 @@ namespace NFX.Erlang
       try
       {
         m_Transport = ErlTransportFactory.Create(RemoteNode.TransportClassName, RemoteNode.NodeName.Value);
+
+        m_Transport.Trace += (o, t, d, msg) => m_Home.OnTrace(t, d, msg);
 
         setSockOpts();
         //m_TcpClient.ReceiveTimeout = 5000;

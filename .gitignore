@@ -90,6 +90,7 @@ csx
 AppPackages/
 
 # Others
+BUILD_INFO.txt
 *.auto.cs
 [Bb]in
 [Oo]bj

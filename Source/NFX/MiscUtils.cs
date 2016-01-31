@@ -294,8 +294,8 @@ namespace NFX
           System.Environment.GetCommandLineArgs()[0]+ ".exe";
 #endif
 
-      return withPath ? Path.Combine(System.Environment.CurrentDirectory, applicationName)
-                      : applicationName;
+      return withPath ? Path.GetFullPath(applicationName)
+                      : Path.GetFileName(applicationName);
     }
 
     /// <summary>

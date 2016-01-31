@@ -84,14 +84,16 @@ namespace NFX.Erlang
 
         if (s == null)
         {
-            //create transport
-            s = ErlTransportFactory.Create(node.TransportClassName, node.NodeName.Value);
+          //create transport
+          s = ErlTransportFactory.Create(node.TransportClassName, node.NodeName.Value);
 
-            //append SSH params to transport
-            node.AppendSSHParamsToTransport(s);
+          s.Trace += (o, t, d, msg) => home.OnTrace(t, d, msg);
 
-            //connect (I am not sure)
-            s.Connect(node.Host, EPMD_PORT);
+          //append SSH params to transport
+          node.AppendSSHParamsToTransport(s);
+
+          //connect (I am not sure)
+          s.Connect(node.Host, EPMD_PORT);
         }
 
         // build and send epmd request

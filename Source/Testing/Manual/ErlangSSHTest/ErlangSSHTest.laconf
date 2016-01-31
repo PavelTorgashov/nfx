@@ -17,7 +17,7 @@ nfx
 		node="b" 
 		{
 			is-local=true
-            accept=true
+            accept=false
             address="localhost" // address="127.0.0.1:1234"
         }
 
@@ -33,8 +33,13 @@ nfx
 
 			transport-type = "NFX.Erlang.ErlSshTransport, NFX.SSH"	//here we inject SSH transport calss instead of TCP transport
 			ssh-user-name = "Guest" //enter here your user account to connect to SSH server
-			ssh-private-key-file="c:\\rsa.bin"
-			ssh-authentication-type="PublicKey"
+			//ssh-private-key-file="c:\\rsa.bin"
+			//ssh-authentication-type="PublicKey"
+
+
+            tcp-no-delay=true
+            tcp-rcv-buf-size=100000
+            tcp-snd-buf-size=100000
 		}
 	}
 }

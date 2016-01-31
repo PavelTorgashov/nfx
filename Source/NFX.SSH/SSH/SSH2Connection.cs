@@ -519,6 +519,14 @@ namespace NFX.SSH.SSH2 {
                 _asyncKeyExchanger.AsyncProcessPacket(packet);
                 return true;
             }
+            else if (pt == PacketType.SSH_MSG_GLOBAL_REQUEST)
+            {
+                SSH2DataWriter wr = new SSH2DataWriter();
+                wr.WritePacketType(PacketType.SSH_MSG_REQUEST_SUCCESS);
+                wr.WriteBool(true);
+                TransmitRawPayload(wr.ToByteArray());
+                return true;
+            }
             else {
                 _eventReceiver.OnUnknownMessage((byte)pt, r.Image);
                 return false;
@@ -694,7 +702,8 @@ namespace NFX.SSH.SSH2 {
             wr.WriteInt32(_remoteID);
             _waitingChannelClose = true;
             _connection.TraceTransmissionEvent(PacketType.SSH_MSG_CHANNEL_CLOSE, "");
-            TransmitPacket(packet);
+            try   { TransmitPacket(packet); }
+            catch { _connection.Close();    }
         }
 
         //maybe this is SSH2 only feature

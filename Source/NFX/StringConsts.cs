@@ -881,6 +881,7 @@ namespace NFX
     public const string ERL_CONN_UNKNOWN_TAG_ERROR            = "Unknown tag {0}: {1}";
     public const string ERL_CONN_WRONG_STATUS_ERROR           = "Peer replied with status '{0}' instead of 'ok'";
     public const string ERL_EPMD_INVALID_RESPONSE_ERROR       = "No valid EPMD response";
+    public const string ERL_EPMD_INVALID_PORT_ERROR           = "EPMD couldn't resolve port number for node '{0}'";
     public const string ERL_EPMD_FAILED_TO_CONNECT_ERROR      = "Failed to connect to EPMD server";
     public const string ERL_EPMD_LOOKUP_R4                    = "LOOKUP {0} (ver=r4)";
     public const string ERL_EPMD_NOT_FOUND                    = "NOT FOUND";
