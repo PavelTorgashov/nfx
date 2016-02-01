@@ -33,7 +33,7 @@ namespace NFX.Erlang
 
         #endregion
 
-        #region Public static
+        #region Public
 
         /// <summary>
         /// Returns password for specified userName and nodeName
@@ -85,6 +85,19 @@ namespace NFX.Erlang
 
         #endregion
 
+        #region Internal
+
+        /// <summary>
+        /// Removes password session from cache
+        /// </summary>
+        internal static void FinishPasswordSession(ErlPasswordSession ps)
+        {
+            lock (m_passCache)
+                m_passCache.Remove(ps);
+        }
+
+        #endregion
+
         #region Private
 
         static String SecureStringToString(SecureString value)
@@ -125,6 +138,7 @@ namespace NFX.Erlang
 
         public void Dispose()
         {
+            ErlTransportPasswordSource.FinishPasswordSession(this);
             if (Password != null)
                 Password.Dispose();//dispose Password
         }
